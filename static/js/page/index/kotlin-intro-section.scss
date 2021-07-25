@@ -1,0 +1,126 @@
+.kotlin-intro-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  font-family: Inter, Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 52px;
+
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  padding-top: 30px;
+
+  .kotlin-intro-section__contributors {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+
+    display: flex;
+    align-items: center;
+    color: #fff;
+    margin-top: 22px;
+    letter-spacing: 0.005em;
+    -webkit-font-smoothing: antialiased;
+
+
+    .kotlin-intro-section__logo-link {
+      margin-right: 24px;
+      height: 32px;
+      outline: none;
+    }
+  }
+
+  .kotlin-intro-section__contributors-link {
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .kotlin-intro-section__contributors-link:hover,
+  .kotlin-intro-section__contributors-link:focus, {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    text-decoration: none;
+    transition: 0.3s ease-out;
+  }
+
+  .kotlin-intro-section__logo {
+    display: inline-block;
+    background-size: contain;
+  }
+}
+
+.kotlin-banner-section__try-ide {
+  font-size: 15px;
+  margin-left: 24px;
+  font-weight: normal;
+}
+
+.kotlin-portals-section {
+  padding-bottom: 24px;
+}
+
+.kotlin-portals-section__list {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-bottom: -27px;
+}
+
+.kotlin-portals-section__item {
+  flex: 1 1 33.3%;
+  margin-bottom: 27px;
+
+  display: flex;
+  align-items: center;
+}
+
+a.kotlin-portals-section__link,
+a.kotlin-portals-section__link:any-link {
+  color: #fff;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.kotlin-portals-section__item::before {
+  display: inline-block;
+  content: '';
+  background: transparent center no-repeat;
+  background-size: 30px;
+  margin-right: 16px;
+  height: 30px;
+  width: 30px;
+}
+
+.kotlin-portals-section__link::after {
+  display: inline-block;
+  content: '→';
+  text-decoration: none;
+}
+
+.kotlin-portals-section__item_type_android::before {
+  background-image: url("./images/techs/andriod.svg");
+}
+
+.kotlin-portals-section__item_type_data-science::before {
+  background-image: url("./images/techs/data-science.svg");
+}
+
+.kotlin-portals-section__item_type_mobile::before {
+  background-image: url("./images/techs/mobile.svg");
+}
+
+.kotlin-portals-section__item_type_native::before {
+  background-image: url("./images/techs/native.svg");
+}
+
+.kotlin-portals-section__item_type_web::before {
+  background-image: url("./images/techs/web.svg");
+}
+
+.kotlin-portals-section__item_type_server-side::before {
+  background-image: url("./images/techs/server-side.svg");
+}
