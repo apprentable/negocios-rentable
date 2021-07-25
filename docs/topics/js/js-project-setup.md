@@ -306,25 +306,14 @@ To make adjustments to the configuration used by Karma, place your additional co
 called `karma.config.d` in the root of your project. All `.js` configuration files in this directory will be picked up
 and are automatically merged into the generated `karma.conf.js` at build time.
 
-All karma configuration abilities are well described in Karma's [documentation](https://karma-runner.github.io/5.0/config/configuration-file.html).
+All karma configuration abilities are well described in Karma's [documentation](http://karma-runner.github.io/5.0/config/configuration-file.html).
 
 ## webpack bundling
 
 For browser targets, the Kotlin/JS plugin uses the widely known [webpack](https://webpack.js.org/) module bundler.
 
-### webpack version 
-
-The Kotlin/JS plugin uses webpack %webpackMajorVersion%.
-
-If you have projects created with plugin versions earlier than 1.5.0,
-you can temporarily switch back to webpack %webpackPreviousMajorVersion% used in these versions by adding the following line
-to the project's `gradle.properties`:
-
-```properties
-kotlin.js.webpack.major.version=4
-```
-
-### webpack task
+The Kotlin/JS Gradle plugin automatically generates a standard webpack configuration file 
+at build time which you can find the at `build/js/packages/projectName/webpack.config.js`.
 
 The most common webpack adjustments can be made directly via the
 `kotlin.js.browser.webpackTask` configuration block in the Gradle build file:
@@ -343,11 +332,6 @@ webpackTask {
 You can also configure common webpack settings to use in bundling, running, and testing tasks in the `commonWebpackConfig`
 block.
 
-### webpack configuration file 
-
-The Kotlin/JS Gradle plugin automatically generates a standard webpack configuration file
-at the build time. It is located in `build/js/packages/projectName/webpack.config.js`.
-
 If you want to make further adjustments to the webpack configuration, place your additional configuration files inside
 a directory called `webpack.config.d` in the root of your project. When building your project, all `.js` configuration
 files will automatically be merged into the `build/js/packages/projectName/webpack.config.js` file.
@@ -363,8 +347,6 @@ config.module.rules.push({
 
 All webpack configuration
 capabilities are well described in its [documentation](https://webpack.js.org/concepts/configuration/).
-
-### Building executables
 
 For building executable JavaScript artifacts through webpack, the Kotlin/JS plugin contains the `browserDevelopmentWebpack`
 and `browserProductionWebpack` Gradle tasks.

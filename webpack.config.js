@@ -44,13 +44,6 @@ module.exports = (params = {}) => {
 
     mode: env,
 
-    resolve: {
-      alias: {
-        'react': 'react',
-        'react-dom': 'react-dom',
-      },
-    },
-
     module: {
       rules: [
         {
@@ -61,7 +54,7 @@ module.exports = (params = {}) => {
           ]
         },
         {
-          test: /\.s?css$/,
+          test: /\.scss$/,
           use: [
             ExtractCssPlugin.loader,
             {
@@ -92,6 +85,7 @@ module.exports = (params = {}) => {
               }
             }
           ]
+
         },
         {
           test: /\.twig$/,

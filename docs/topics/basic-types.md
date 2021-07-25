@@ -135,19 +135,16 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-All nullable references to `a` are actually the same object because of the memory optimization that JVM applies to `Integer`s
-between `-128` and `127`. It doesn't apply to the `b` references, so they are different objects.
-
 On the other hand, they are still equal:
 
 ```kotlin
 fun main() {
 //sampleStart
-    val b: Int = 10000
-    println(b == b) // Prints 'true'
-    val boxedB: Int? = b
-    val anotherBoxedB: Int? = b
-    println(boxedB == anotherBoxedB) // Prints 'true'
+    val a: Int = 10000
+    println(a == a) // Prints 'true'
+    val boxedA: Int? = a
+    val anotherBoxedA: Int? = a
+    println(boxedA == anotherBoxedA) // Prints 'true'
 //sampleEnd
 }
 ```
@@ -298,6 +295,10 @@ floating point numbers (e.g. `Any`, `Comparable<...>`, a type parameter), the op
 
 ### Unsigned integers
 
+>Unsigned types are available only since Kotlin 1.3 and currently in [Beta](components-stability.md). See details [below](#beta-status-of-unsigned-integers)
+>
+{type="note"}
+
 In addition to [integer types](#integer-types), Kotlin provides the following types for unsigned integer numbers:
 
 * `UByte`: an unsigned 8-bit integer, ranges from 0 to 255
@@ -315,11 +316,6 @@ Unsigned types are implemented using feature that's not yet stable, namely [inli
 
 #### Unsigned arrays and ranges 
 
-> Unsigned arrays and operations on them are in [Beta](components-stability.md). They can be changed incompatibly at any time.
-> Opt-in is required (see the details below).
->
-{type="warning"}
-
 Same as for primitives, each of unsigned type has corresponding type that represents arrays of that type:
 
 * `UByteArray`: an array of unsigned bytes
@@ -329,14 +325,8 @@ Same as for primitives, each of unsigned type has corresponding type that repres
 
 Same as for signed integer arrays, they provide similar API to `Array` class without boxing overhead. 
 
-When you use unsigned arrays, you'll get a warning that indicates that this feature is not stable yet.
-To remove the warning, opt in using the `@ExperimentalUnsignedTypes` annotation. 
-It's up to you to decide if your clients have to explicitly opt-in into usage of your API, but keep in mind that unsigned
-array are not a stable feature, so API which uses them can be broken by changes in the language.
-[Learn more about opt-in requirements](opt-in-requirements.md).
-
-[Ranges and progressions](ranges.md) are supported for `UInt` and `ULong` by classes `UIntRange`,`UIntProgression`,
-`ULongRange`, and `ULongProgression`. Together with the unsigned integer types, these classes are stable.
+Also, [ranges and progressions](ranges.md) are supported for `UInt` and `ULong` by classes `UIntRange`,
+`UIntProgression`, `ULongRange`, and `ULongProgression`. 
 
 #### Literals
 
@@ -360,6 +350,22 @@ val a2 = 0xFFFF_FFFF_FFFFu // ULong: no expected type provided, constant doesn't
 ```kotlin
 val a = 1UL // ULong, even though no expected type provided and constant fits into UInt
 ```
+
+#### Beta status of unsigned integers
+
+The design of unsigned types is in [Beta](components-stability.md), meaning that its compatibility is best-effort only and not guaranteed.
+
+When using unsigned arithmetics, a warning will be reported, indicating that this feature has not been released to stable.
+To remove the warning, you have to opt in for usage of unsigned types:
+
+* To propagate the opt-in requirement, annotate declarations that use unsigned integers with  `@ExperimentalUnsignedTypes`.
+* To opt-in without propagating, either annotate declarations with `@OptIn(ExperimentalUnsignedTypes::class)`
+or pass `-Xopt-in=kotlin.ExperimentalUnsignedTypes` to the compiler.
+
+It's up to you to decide if your clients have to explicitly opt-in into usage of your API, but keep in mind that
+unsigned types are not a stable feature, so API which uses them can be suddenly broken by changes in the language. 
+
+See the [opt-in requirements](opt-in-requirements.md) for details on using APIs that require opt-in.
 
 #### Further discussion
 
@@ -421,7 +427,15 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-If a value of character variable is a digit, you can explicitly convert it to an `Int` number using the [`digitToInt()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/digit-to-int.html) function.
+If a value of character variable is a digit, you can explicitly convert it to an `Int` number:
+
+```kotlin
+fun decimalDigitValue(c: Char): Int {
+    if (c !in '0'..'9')
+        throw IllegalArgumentException("Out of range")
+    return c.toInt() - '0'.toInt() // Explicit conversions to numbers
+}
+```
 
 >**On JVM**: Like [numbers](#numbers-representation-on-the-jvm), characters are boxed when a nullable reference is needed.
 >Identity is not preserved by the boxing operation.
@@ -458,7 +472,7 @@ All operations that transform strings return their results in a new `String` obj
 fun main() {
 //sampleStart
     val str = "abcd"
-    println(str.uppercase()) // Create and print a new String object
+    println(str.toUpperCase()) // Create and print a new String object
     println(str) // the original string remains the same
 //sampleEnd
 }
@@ -545,11 +559,11 @@ fun main() {
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 You can use templates both in raw and escaped strings.
-To insert the `$` character in a raw string (which doesn't support backslash escaping) before any symbol, which is allowed as a beginning of an [identifier](https://kotlinlang.org/docs/reference/grammar.html#identifiers), use the following syntax:
+To insert the `$` character in a raw string (which doesn't support backslash escaping), use the following syntax:
 
 ```kotlin
 val price = """
-${'$'}_9.99
+${'$'}9.99
 """
 ```
 

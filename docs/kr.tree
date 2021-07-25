@@ -23,18 +23,16 @@
 
     <toc-element toc-title="What's new">
         <toc-element toc-title="Kotlin">
-            <toc-element id="whatsnew15.md" toc-title="Kotlin 1.5.0"/>
+            <toc-element id="whatsnew1430.md" toc-title="Kotlin 1.4.30"/>
+            <toc-element id="whatsnew1420.md" toc-title="Kotlin 1.4.20"/>
+            <toc-element id="whatsnew14.md" toc-title="Kotlin 1.4.0"/>
             <toc-element toc-title="Earlier versions">
-                <toc-element id="whatsnew1430.md" toc-title="Kotlin 1.4.30"/>
-                <toc-element id="whatsnew1420.md" toc-title="Kotlin 1.4.20"/>
-                <toc-element id="whatsnew14.md" toc-title="Kotlin 1.4.0"/>
                 <toc-element id="whatsnew13.md" toc-title="Kotlin 1.3"/>
                 <toc-element id="whatsnew12.md" toc-title="Kotlin 1.2"/>
                 <toc-element id="whatsnew11.md" toc-title="Kotlin 1.1"/>
             </toc-element>
         </toc-element>
         <toc-element toc-title="Kotlin plugin">
-            <toc-element id="whatsnew-plugin-20211.md" toc-title="Kotlin plugin 2021.1"/>
             <toc-element id="whatsnew-plugin-20203.md" toc-title="Kotlin plugin 2020.3"/>
         </toc-element>
     </toc-element>
@@ -125,7 +123,6 @@
             <toc-element id="java-to-kotlin-interop.md"/>
             <toc-element id="mixing-java-kotlin-intellij.md"/>
             <toc-element id="comparison-to-java.md"/>
-            <toc-element id="java-to-kotlin-idioms-strings.md"/>
         </toc-element>
         <toc-element toc-title="JavaScript">
 
@@ -174,7 +171,6 @@
             <toc-element id="apple-framework.md"/>
             <toc-element id="native-debugging.md"/>
             <toc-element id="native-ios-symbolication.md"/>
-            <toc-element id="native-improving-compilation-time.md" toc-title="Improving compilation times"/>
             <toc-element id="native-faq.md"/>
             <toc-element toc-title="Intro to Kotlin/Native – hands-on" href="https://play.kotlinlang.org/hands-on/Introduction%20to%20Kotlin%20Native/"/>
         </toc-element>
@@ -243,7 +239,7 @@
             <toc-element id="code-style-migration-guide.md"/>
         </toc-element>
         <toc-element toc-title="Android Studio" href="https://developer.android.com/studio"/>
-        <toc-element id="eclipse.md" accepts-web-file-names="getting-started-eclipse.html"/>
+        <toc-element id="eclipse.md" accepts-web-file-names="getting-started-eclipse.md"/>
         <toc-element toc-title="Compiler">
             <toc-element toc-title="Command-line compiler" id="command-line.md"/>
             <toc-element toc-title="Compiler options" id="compiler-reference.md"/>
@@ -252,7 +248,7 @@
             <toc-element id="all-open-plugin.md" toc-title="All-open"/>
             <toc-element id="no-arg-plugin.md" toc-title="No-arg"/>
             <toc-element id="sam-with-receiver-plugin.md" toc-title="SAM with receiver"/>
-            <toc-element id="kapt.md" toc-title="kapt"/>
+            <toc-element id="kapt.md" toc-title="Kapt"/>
         </toc-element>
         <toc-element id="kotlin-and-ci.md" toc-title="TeamCity"/>
         <toc-element id="kotlin-doc.md" toc-title="KDoc and Dokka"/>
@@ -283,7 +279,6 @@
             <toc-element id="components-stability.md"/>
             <toc-element id="components-stability-pre-1.4.md"/>
             <toc-element toc-title="Compatibility">
-                <toc-element id="compatibility-guide-15.md"/>
                 <toc-element id="compatibility-guide-14.md"/>
                 <toc-element id="compatibility-guide-13.md" />
                 <toc-element id="compatibility-modes.md"/>

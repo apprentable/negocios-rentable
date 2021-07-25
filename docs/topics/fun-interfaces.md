@@ -18,7 +18,7 @@ For functional interfaces, you can use SAM conversions that help make your code 
 
 Instead of creating a class that implements a functional interface manually, you can use a lambda expression.
 With a SAM conversion, Kotlin can convert any lambda expression whose signature matches
-the signature of the interface's single method into the code, which dynamically instantiates the interface implementation.
+the signature of the interface's single method into an instance of a class that implements the interface.
 
 For example, consider the following Kotlin functional interface:
 
@@ -65,14 +65,10 @@ You can also use [SAM conversions for Java interfaces](java-interop.md#sam-conve
 
 ## Functional interfaces vs. type aliases
 
-Functional interfaces and [type aliases](type-aliases.md) serve different purposes.
-Type aliases are just names for existing types – they don't create a new type, while functional interfaces do.
-You can provide extensions that are specific to a particular functional interface to be inapplicable for plain functions or their type aliases.
+Functional interfaces and [type aliases](type-aliases.md) serve different purposes. Type aliases are just names for
+existing types – they don't create a new type, while functional interfaces do.
 
 Type aliases can have only one member, while functional interfaces can have multiple non-abstract members and one abstract member.
 Functional interfaces can also implement and extend other interfaces.
 
-Functional interfaces are more flexible and provide more capabilities than type aliases, but they can be more costly both syntactically and at runtime because they can require conversions to a specific interface.
-When you choose which one to use in your code, consider your needs:
-* If your API needs to accept a function (any function) with some specific parameter and return types – use a simple functional type or define a type alias to give a shorter name to the corresponding functional type.
-* If your API accepts a more complex entity than a function – for example, it has non-trivial contracts and/or operations on it that can't be expressed in a functional type's signature – declare a separate functional interface for it.
+Considering the above, functional interfaces are more flexible and provide more capabilities than type aliases.

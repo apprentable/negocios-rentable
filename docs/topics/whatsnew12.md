@@ -1,7 +1,5 @@
 [//]: # (title: What's new in Kotlin 1.2)
 
-_Release date: 28 November 2017_
-
 ## Table of contents
 
 * [Multiplatform projects](#multiplatform-projects-experimental)
@@ -54,7 +52,7 @@ actual fun hello(world: String): String =
 actual typealias URL = java.net.URL
 ```
 
-See the [multiplatform programming documentation](multiplatform.md) for details and steps to build a multiplatform project.
+See the [documentation](multiplatform.md) for details and steps to build a multiplatform project.
 
 ## Other language features
 

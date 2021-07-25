@@ -12,7 +12,6 @@ import xmltodict
 import yaml
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, Response, send_from_directory, request
-from flask.views import View
 from flask.helpers import url_for, send_file, make_response
 from flask_frozen import Freezer, walk_directory
 from hashlib import md5
@@ -32,8 +31,7 @@ from src.pdf import generate_pdf
 from src.processors.processors import process_code_blocks
 from src.processors.processors import set_replace_simple_code
 from src.search import build_search_indices
-from src.sitemap import generate_sitemap, generate_temporary_sitemap
-from src.ktl_components import KTLComponentExtension
+from src.sitemap import generate_sitemap
 
 app = Flask(__name__, static_folder='_assets')
 app.config.from_pyfile('mysettings.py')
@@ -143,9 +141,6 @@ def add_year_to_context():
     }
 
 
-app.jinja_env.add_extension(KTLComponentExtension)
-
-
 @app.context_processor
 def add_data_to_context():
     return {
@@ -206,11 +201,6 @@ def get_universities():
     return Response(json.dumps(site_data['universities'], cls=DateAwareEncoder), mimetype='application/json')
 
 
-@app.route('/data/user-groups.json')
-def get_user_groups():
-    return Response(json.dumps(site_data['user-groups'], cls=DateAwareEncoder), mimetype='application/json')
-
-
 @app.route('/docs/reference/grammar.html')
 def grammar():
     grammar = get_grammar(build_mode)
@@ -238,16 +228,39 @@ def kotlin_docs_pdf():
 def community_page():
     return render_template('pages/community.html')
 
-@app.route('/user-groups/user-group-list.html')
-def user_group_list():
-    return render_template(
-        'pages/user-groups/user-group-list.html',
-        user_groups_data=site_data['user-groups'],
-        number_of_groups=sum(map(lambda section: len(section['groups']), site_data['user-groups'])))
-
 @app.route('/education/')
 def education_page():
     return render_template('pages/education/index.html')
+
+@app.route('/docs/diagnostics/experimental-coroutines')
+@app.route('/docs/diagnostics/experimental-coroutines/')
+@app.route('/docs/reference/coroutines.html')
+def coroutines_redirect():
+    return render_template('redirect.html', url=url_for('page', page_path='docs/reference/coroutines-overview'))
+
+
+@app.route('/community/user-groups.html')
+def community_user_groups_redirect():
+    return render_template('redirect.html', url=url_for('page', page_path='user-groups/user-group-list'))
+
+
+@app.route('/docs/tutorials/coroutines-basic-jvm.html')
+def coroutines_tutor_redirect():
+    return render_template('redirect.html', url=url_for('page', page_path='docs/tutorials/coroutines/coroutines-basic'
+                                                                          '-jvm'))
+
+@app.route('/docs/reference/collections.html')
+def collections_redirect():
+    return render_template('redirect.html', url=url_for('page', page_path='/docs/reference/collections-overview'))
+
+@app.route('/docs/reference/experimental.html')
+def optin_redirect():
+    return render_template('redirect.html', url=url_for('page', page_path='/docs/reference/opt-in-requirements'))
+
+@app.route('/docs/resources.html')
+def resources_redirect():
+    return render_template('redirect.html', url="https://kotlin.link/")
+
 
 @app.route('/')
 def index_page():
@@ -351,6 +364,19 @@ def validate_links_weak(page, page_path):
                         "\n".join(str(item) for item in errors_copy))
 
 
+@app.route('/community.html')
+def community_redirect():
+    return render_template('redirect.html', url=url_for('community_page'))
+
+
+@app.route('/docs/events.html')
+def events_redirect():
+    return render_template('redirect.html', url=url_for('page', page_path='community/talks'))
+
+@app.route('/docs/reference/compatibility.html')
+def compatibility_redirect():
+    return render_template('redirect.html', url=url_for('page', page_path='/docs/reference/evolution/components-stability'))
+
 @freezer.register_generator
 def page():
     for page in pages:
@@ -375,51 +401,13 @@ def api_page():
             yield {'page_path': path.join(path.relpath(root, api_folder), file).replace(os.sep, '/')}
 
 
-class RedirectTemplateView(View):
-    def __init__(self, url):
-        self.redirect_url = url
-
-    def dispatch_request(self):
-        return render_template('redirect.html', url=self.redirect_url)
-
-
-def generate_redirect_pages():
-    redirects_folder = path.join(root_folder, 'redirects')
-    for root, dirs, files in os.walk(redirects_folder):
-        for file in files:
-            if not file.endswith(".yml"):
-                continue
-
-            redirects_file_path = path.join(redirects_folder, file)
-
-            with open(redirects_file_path, encoding="UTF-8") as stream:
-                try:
-                    redirects = yaml.load(stream, Loader=FullLoader)
-
-                    for entry in redirects:
-                        url_to = entry["to"]
-                        url_from = entry["from"]
-                        url_list = url_from if isinstance(url_from, list) else [url_from]
-
-                        for url in url_list:
-                            app.add_url_rule(url, view_func=RedirectTemplateView.as_view(url, url=url_to))
-
-                except yaml.YAMLError as exc:
-                    sys.stderr.write('Cant parse data file ' + file + ': ')
-                    sys.stderr.write(str(exc))
-                    sys.exit(-1)
-                except IOError as exc:
-                    sys.stderr.write('Cant read data file ' + file + ': ')
-                    sys.stderr.write(str(exc))
-                    sys.exit(-1)
-
-
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('pages/404.html'), 404
 
 
 app.register_error_handler(404, page_not_found)
+
 
 @app.route('/api/<path:page_path>')
 def api_page(page_path):
@@ -479,8 +467,6 @@ def get_index_page(page_path):
     return process_page(page_path + 'index')
 
 
-generate_redirect_pages()
-
 @app.after_request
 def add_header(request):
     request.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -529,10 +515,8 @@ if __name__ == '__main__':
 
         elif argv_copy[1] == "sitemap":
             generate_sitemap(get_dist_pages())
-            # temporary sitemap
-            generate_temporary_sitemap()
         elif argv_copy[1] == "index":
-            build_search_indices(get_dist_pages())
+            build_search_indices(get_dist_pages(), site_data['releases']['latest']['version'])
         else:
             print("Unknown argument: " + argv_copy[1])
             sys.exit(1)

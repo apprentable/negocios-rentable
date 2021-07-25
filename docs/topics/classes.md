@@ -3,7 +3,7 @@
 Classes in Kotlin are declared using the keyword `class`:
 
 ```kotlin
-class Person { /*...*/ }
+class Invoice { /*...*/ }
 ```
 
 The class declaration consists of the class name, the class header (specifying its type parameters, the primary
@@ -64,20 +64,14 @@ property initializers declared in the class body:
 
 ```kotlin
 class Customer(name: String) {
-    val customerKey = name.uppercase()
+    val customerKey = name.toUpperCase()
 }
 ```
 
-Kotlin has a concise syntax for declaring properties and initializing them from the primary constructor:
+In fact, for declaring properties and initializing them from the primary constructor, Kotlin has a concise syntax:
 
 ```kotlin
-class Person(val firstName: String, val lastName: String, var age: Int)
-```
-
-Such declarations can also include default values of the class properties:
-
-```kotlin
-class Person(val firstName: String, val lastName: String, var isEmployed: Boolean = true)
+class Person(val firstName: String, val lastName: String, var age: Int) { /*...*/ }
 ```
 
 You can use a [trailing comma](coding-conventions.md#trailing-commas) when you declare class properties:
@@ -111,7 +105,7 @@ class Person(val pets: MutableList<Pet> = mutableListOf())
 
 class Pet {
     constructor(owner: Person) {
-        owner.pets.add(this) // adds this pet to the list of its owner's pets
+        owner.pets.add(this) // adds this pet to the list of its owners pets
     }
 }
 ```

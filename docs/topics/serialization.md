@@ -26,9 +26,8 @@ and have suffixes that reflect the serialization format. Examples:
 Platform-specific artifacts are handled automatically; you don't need to add them manually. Use the same dependencies in
 JVM, JS, Native, and multiplatform projects.
 
-Note that the `kotlinx.serialization` libraries use their own versioning structure, which doesn't match Kotlin's versioning.
-Check out the releases on [GitHub](https://github.com/Kotlin/kotlinx.serialization/releases) to find the latest versions.
-
+Note that the `kotlinx.serialization` libraries use their own versioning structure, which doesn't match Kotlin's versioning. Check out the
+releases on [GitHub](https://github.com/Kotlin/kotlinx.serialization/releases) to find the latest versions.
 ## Formats
 
 `kotlinx.serialization` includes libraries for various serialization formats:
@@ -91,8 +90,7 @@ in the Kotlin Gradle DSL).
 
     </tabs>
 
-Now you're ready to use the serialization API in your code. The API is located in the the `kotlinx.serialization` package
-and its format-specific subpackages such as `kotlinx.serialization.json`.
+Now you're ready to use the serialization API in your code.
 
 First, make a class serializable by annotating it with `@Serializable`.
 
@@ -103,7 +101,7 @@ data class Data(val a: Int, val b: String)
 
 You can now serialize an instance of this class by calling `Json.encodeToString()`.
 
-```kotlin 
+```kotlin
 Json.encodeToString(Data(42, "str"))
 ```
 

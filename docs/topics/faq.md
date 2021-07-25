@@ -73,7 +73,8 @@ For more information, check out the [Kotlin/Native documentation](native-overvie
 ### What IDEs support Kotlin?
 
 Kotlin is supported by all major Java IDEs including [IntelliJ IDEA](jvm-get-started.md),
-[Android Studio](https://developer.android.com/kotlin/get-started), and [Eclipse](eclipse.md). In addition, a [command line compiler](command-line.md) 
+[Android Studio](https://developer.android.com/kotlin/get-started), [Eclipse](eclipse.md), and 
+[NetBeans](http://plugins.netbeans.org/plugin/68590/kotlin). In addition, a [command line compiler](command-line.md) 
 is available and provides straightforward support for compiling and running applications.
   
 ### What build tools support Kotlin?
@@ -93,9 +94,9 @@ When targeting native, Kotlin will produce platform-specific code (via LLVM).
 
 ### Which versions of JVM does Kotlin target?
 
-Kotlin lets you choose the version of JVM for execution. By default, the Kotlin/JVM compiler produces Java 8 compatible bytecode.
+Kotlin lets you choose the version of JVM for execution. By default, the Kotlin/JVM compiler produces Java 6 compatible bytecode.
 If you want to make use of optimizations available in newer versions of Java, you can explicitly specify the target Java
-version from 9 to 16. Note that in this case the resulting bytecode might not run on lower versions. 
+version from 8 to 15. Note that in this case the resulting bytecode might not run on lower versions. 
 
 ### Is Kotlin hard?
 
@@ -129,7 +130,7 @@ on the [Books](books.md) page. For more books, see the community-maintained list
 ### Are there any online courses available for Kotlin?
 
 There are a few courses available for Kotlin, including a [Pluralsight Kotlin Course](https://www.pluralsight.com/courses/kotlin-getting-started) by Kevin Jones, 
-an [O’Reilly Course](https://shop.oreilly.com/product/0636920052982.do) by Hadi Hariri and an [Udemy Kotlin Course](https://petersommerhoff.com/dev/kotlin/kotlin-beginner-tutorial/) by Peter Sommerhoff.
+an [O’Reilly Course](https://shop.oreilly.com/product/0636920052982.do) by Hadi Hariri and an [Udemy Kotlin Course](http://petersommerhoff.com/dev/kotlin/kotlin-beginner-tutorial/) by Peter Sommerhoff.
 
 There are also many recordings of [Kotlin talks](https://kotlinlang.org/community/talks.html) available on YouTube and Vimeo. 
 
@@ -159,7 +160,7 @@ Yes. The most active Kotlin account is [on Twitter](https://twitter.com/kotlin).
 ### Any other online Kotlin resources?
 
 The web site has a bunch of [online resources](https://kotlinlang.org/community/), including [Kotlin Digests](https://kotlin.link) by community members, 
-a [newsletter](http://kotlinweekly.net), a [podcast](https://talkingkotlin.com) and more.   
+a [newsletter](http://www.kotlinweekly.net), a [podcast](https://talkingkotlin.com) and more.   
 
 ### Where can I get an HD Kotlin logo?
 

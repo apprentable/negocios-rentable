@@ -63,7 +63,7 @@ There are also functions that narrow the element type by filtering elements of a
         val numbers = listOf(null, 1, "two", 3.0, "four")
         println("All String elements in upper case:")
         numbers.filterIsInstance<String>().forEach {
-            println(it.uppercase())
+            println(it.toUpperCase())
         }
     //sampleEnd
     }

@@ -55,38 +55,6 @@ Due to the similar nature of scope functions, choosing the right one for your ca
 depends on your intent and the consistency of use in your project. Below we'll provide detailed descriptions of the
 distinctions between scope functions and the conventions on their usage.
 
-## Function selection
-
-To help you choose the right scope function for your purpose, we provide the table of key differences between them.
-
-|Function|Object reference|Return value|Is extension function|
-|---|---|---|---|
-|`let`|`it`|Lambda result|Yes|
-|`run`|`this`|Lambda result|Yes|
-|`run`|-|Lambda result|No: called without the context object|
-|`with`|`this`|Lambda result|No: takes the context object as an argument.|
-|`apply`|`this`|Context object|Yes|
-|`also`|`it`|Context object|Yes|
-
-The detailed information about the differences is provided in the dedicated sections below.
-
-Here is a short guide for choosing scope functions depending on the intended purpose:
-
-* Executing a lambda on non-null objects: `let`
-* Introducing an expression as a variable in local scope: `let`
-* Object configuration: `apply`
-* Object configuration and computing the result: `run`
-* Running statements where an expression is required: non-extension `run`
-* Additional effects: `also`
-* Grouping function calls on an object: `with`
-
-The use cases of different functions overlap, so that you can choose the functions based on the specific conventions used
-in your project or team.
-
-Although the scope functions are a way of making the code more concise, avoid overusing them: it can decrease your code
-readability and lead to errors. Avoid nesting scope functions and be careful when chaining them: it's easy to get confused
-about the current context object and the value of `this` or `it`.
-
 ## Distinctions
 
 Because the scope functions are all quite similar in nature, it's important to understand the differences between them.
@@ -366,7 +334,7 @@ fun main() {
     val modifiedFirstItem = numbers.first().let { firstItem ->
         println("The first item of the list is '$firstItem'")
         if (firstItem.length >= 5) firstItem else "!" + firstItem + "!"
-    }.uppercase()
+    }.toUpperCase()
     println("First item after modifications: '$modifiedFirstItem'")
 //sampleEnd
 }
@@ -513,6 +481,36 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
+## Function selection
+
+To help you choose the right scope function for your purpose, we provide the table of key differences between them. 
+
+|Function|Object reference|Return value|Is extension function|
+|---|---|---|---|
+|`let`|`it`|Lambda result|Yes|
+|`run`|`this`|Lambda result|Yes|
+|`run`|-|Lambda result|No: called without the context object|
+|`with`|`this`|Lambda result|No: takes the context object as an argument.|
+|`apply`|`this`|Context object|Yes|
+|`also`|`it`|Context object|Yes|
+
+Here is a short guide for choosing scope functions depending on the intended purpose:
+
+* Executing a lambda on non-null objects: `let`
+* Introducing an expression as a variable in local scope: `let`
+* Object configuration: `apply`
+* Object configuration and computing the result: `run`
+* Running statements where an expression is required: non-extension `run`
+* Additional effects: `also`
+* Grouping function calls on an object: `with`
+
+The use cases of different functions overlap, so that you can choose the functions based on the specific conventions used
+in your project or team.
+
+Although the scope functions are a way of making the code more concise, avoid overusing them: it can decrease your code
+readability and lead to errors. Avoid nesting scope functions and be careful when chaining them: it's easy to get confused
+about the current context object and the value of `this` or `it`.
+
 ## takeIf and takeUnless
 
 In addition to scope functions, the standard library contains the functions `takeIf` and `takeUnless`. These functions
@@ -544,8 +542,8 @@ When chaining other functions after `takeIf` and `takeUnless`, don't forget to p
 fun main() {
 //sampleStart
     val str = "Hello"
-    val caps = str.takeIf { it.isNotEmpty() }?.uppercase()
-   //val caps = str.takeIf { it.isNotEmpty() }.uppercase() //compilation error
+    val caps = str.takeIf { it.isNotEmpty() }?.toUpperCase()
+   //val caps = str.takeIf { it.isNotEmpty() }.toUpperCase() //compilation error
     println(caps)
 //sampleEnd
 }

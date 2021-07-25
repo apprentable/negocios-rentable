@@ -5,37 +5,7 @@ Kotlin handles this case with *object expressions* and *object declarations*.
 
 ## Object expressions
 
-_Object expressions_ create objects of anonymous classes, that is, classes that aren't explicitly declared with the `class`
-declaration. Such classes are handy for one-time use. You can define them from scratch, inherit from existing classes,
-or implement interfaces. Instances of anonymous classes are also called _anonymous objects_ because they are defined by
-an expression, not a name.
-
-### Creating anonymous objects from scratch
-
-Object expressions start with the `object` keyword.
-
-If you need just an object with no nontrivial supertypes, write its members in curly braces after `object`:
-
-```kotlin
-
-fun main() {
-//sampleStart
-    val helloWorld = object {
-        val hello = "Hello"
-        val world = "World"
-        // object expressions extend Any, so `override` is required on `toString()`
-        override fun toString() = "$hello $world" 
-    }
-//sampleEnd
-    print(helloWorld)
-}
-```
-{kotlin-runnable="true"}
-
-### Inheriting anonymous objects from supertypes
-
-To create an object of an anonymous class that inherits from some type (or types), specify this type after `object` and
-colon (`:`). Then implement or override the members of this class as if you were [inheriting](inheritance.md) from it:
+To create an object of an anonymous class that inherits from some type (or types), write:
 
 ```kotlin
 window.addMouseListener(object : MouseAdapter() {
@@ -46,7 +16,7 @@ window.addMouseListener(object : MouseAdapter() {
 ```
 
 If a supertype has a constructor, appropriate constructor parameters must be passed to it.
-Multiple supertypes can be specified as a comma-delimited list after the colon:
+Many supertypes can be specified as a comma-delimited list after the colon:
 
 ```kotlin
 open class A(x: Int) {
@@ -60,60 +30,43 @@ val ab: A = object : A(1), B {
 }
 ```
 
-### Using anonymous object as return and value types
+If you need just an object, with no nontrivial supertypes, write:
 
-When an anonymous object is used as a type of a local or [private](visibility-modifiers.md#packages) but not [inline](inline-functions.md)
-declaration (function or property), all its members are accessible via this function or property:
+```kotlin
+fun foo() {
+    val adHoc = object {
+        var x: Int = 0
+        var y: Int = 0
+    }
+    print(adHoc.x + adHoc.y)
+}
+```
+
+Note that anonymous objects can be used as types only in local and [private](visibility-modifiers.md#packages) declarations. If you use an anonymous object as a
+return type of a public function or the type of a public property, the actual type of that function or property
+will be the declared supertype of the anonymous object, or `Any` if you haven't declared any supertype. Members added
+in the anonymous object will not be accessible.
 
 ```kotlin
 class C {
-    private fun getObject() = object {
+    // Private function, so the return type is the anonymous object type
+    private fun foo() = object {
         val x: String = "x"
     }
 
-    fun printX() {
-        println(getObject().x)
+    // Public function, so the return type is Any
+    fun publicFoo() = object {
+        val x: String = "x"
+    }
+
+    fun bar() {
+        val x1 = foo().x        // Works
+        val x2 = publicFoo().x  // ERROR: Unresolved reference 'x'
     }
 }
 ```
 
-If this function or property is public or private inline, its actual type is:
-* `Any` if the anonymous object doesn't have a declared supertype
-* the declared supertype of the anonymous object if there is exactly one such type 
-* the explicitly declared type if there is more than one declared supertype
-
-In all these cases, members added in the anonymous object are not accessible. Overriden members are accessible if they 
-are declared in the actual type of the function or property:
-
-```kotlin
-interface A {
-    fun funFromA() {}
-}
-interface B
-
-class C {
-    // The return type is Any. x is not accessible
-    fun getObject() = object {
-        val x: String = "x"
-    }
-
-    // The return type is A; x is not accessible 
-    fun getObjectA() = object: A {
-        override fun funFromA() {}
-        val x: String = "x"
-    }
-
-    // The return type is B; funFromA() and x are not accessible
-    fun getObjectB(): B = object: A, B { // explicit return type is required
-        override fun funFromA() {}
-        val x: String = "x"
-    }
-}
-```
-
-### Accessing variables from anonymous objects 
-
-The code in object expressions can access variables from the enclosing scope:
+The code in object expressions can access variables from the enclosing scope.
 
 ```kotlin
 fun countClicks(window: JComponent) {
@@ -134,9 +87,8 @@ fun countClicks(window: JComponent) {
 ```
 
 ## Object declarations
-{id="object-declarations-overview"}
 
-[Singleton](https://en.wikipedia.org/wiki/Singleton_pattern) can be useful in several cases,
+[Singleton](http://en.wikipedia.org/wiki/Singleton_pattern) can be useful in several cases,
 and Kotlin (after Scala) makes it easy to declare singletons:
 
 ```kotlin
@@ -203,8 +155,6 @@ class MyClass {
 
 val x = MyClass.Companion
 ```
-
-Class members can access the private fields of a corresponding companion object.
 
 The name of a class used by itself (not as a qualifier to another name) acts as a reference to the companion
 object of the class (whether named or not):
