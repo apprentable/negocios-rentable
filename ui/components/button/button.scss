@@ -1,0 +1,206 @@
+@import "./config";
+@import "../core/utils";
+@import "../core/config";
+@import "./utils";
+
+// Button block
+.button {
+  @extend %size-1;
+
+  font-weight: 700;
+  font-size: $button-font-size;
+  font-family: $button-font-family;
+
+  display: inline-block;
+  box-sizing: border-box;
+
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  letter-spacing: .5px;
+
+  transition: background-color $transition-xfast;
+
+  color: $button-primary-color;
+  background-color: $button-primary-background;
+
+  &:hover {
+    color: $color-white;
+    text-decoration: none;
+    background-color: $button-primary-hover-background;
+  }
+
+  &:active,
+  &:focus {
+    color: $color-white;
+    background-color: $button-primary-active-background;
+  }
+
+  // Modifiers
+
+  &._transparent {
+    color: $link-color;
+    text-decoration: none;
+    background: none;
+
+    @extend %a-actions;
+  }
+
+  &._dark {
+    color: $button-dark-color;
+    background-color: $button-dark-background;
+
+    &:hover {
+      background-color: $button-dark-hover-background;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $button-dark-active-background;
+    }
+  }
+
+  &._light {
+    color: $button-light-color;
+    background-color: $button-light-background;
+
+    &:hover {
+      background-color: $button-light-hover-background;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $button-light-active-background;
+    }
+  }
+
+  &._icon-video {
+    padding-left: $button-unit * 1.1;
+
+    background-image: url(./icon__play-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: 15px 50%;
+  }
+
+  &._margin-bottom {
+    margin-bottom: $button-unit / 2;
+  }
+
+  &._margin-top {
+    margin-top: $button-unit / 2;
+  }
+
+  &._secondary {
+    color: $button-secondary-color;
+    border-width: 1px;
+    border-style: solid;
+
+    background-color: transparent;
+    transition: color $transition-xfast,
+                border-color $transition-xfast;
+
+    &:hover {
+      color: $button-secondary-hover-text-color;
+      background-color: transparent;
+      border-color: $button-secondary-hover-border-color !important;
+    }
+
+    &:active,
+    &:focus {
+      color: $button-secondary-active-text-color;
+      background-color: transparent;
+      border-color: $button-secondary-active-border-color !important;;
+    }
+
+    &._dark {
+      border-color: $button-secondary-border-color-dark;
+    }
+
+    &._light {
+      border-color: $button-secondary-border-color-light;
+    }
+
+    &._icon-video {
+      background-image: url(./icon__play-arrow-blue.svg);
+    }
+  }
+
+  // Sizes
+
+  &._size-1 {
+    @extend %size-1;
+  }
+
+  &._size-2 {
+    @extend %size-2;
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-left: -15px;
+  margin-right: -15px;
+
+  &._align-left {
+    justify-content: flex-start;
+  }
+
+  &._align-right {
+    justify-content: flex-end;
+  }
+
+  > .button,
+  > .button-with-note {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  @include make-break-sm () {
+    flex-direction: column;
+    align-items: center;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    > .button,
+    > .button-with-note {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.button-group__text {
+  font-size: 15px;
+  font-style: italic;
+
+  display: flex;
+  align-items: center;
+}
+
+// Download-group block
+.button-with-note {
+  display: inline-block;
+  text-align: center;
+}
+
+.button-with-note__note {
+  font-size: 12px;
+  line-height: 15px;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  &._color-dark {
+    color: $color-text-gray-medium;
+  }
+
+  &._color-light {
+    color: $color-white;
+  }
+}

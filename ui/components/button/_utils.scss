@@ -1,0 +1,39 @@
+@import "../core/utils";
+@import "./config";
+
+%size-1 {
+  line-height: $button-size-1-height;
+
+  height: $button-size-1-height;
+  padding: 0 $button-unit * .7;
+
+  border-radius: $button-size-1-height;
+
+  @include make-break-sm () {
+    line-height: $button-size-1-height * .8;
+
+    height: $button-size-1-height * .8;
+    padding: 0 20px;
+  }
+}
+
+%size-2 {
+  line-height: $button-size-2-height;
+
+  height: $button-size-2-height;
+  padding: 0 $button-secondary-padding-horizontal;
+
+  border-radius: $button-size-2-height;
+
+  &._icon-video {
+    padding-left: $button-unit * .8;
+    background-position: 10px 50%;
+  }
+
+  @include make-break-sm () {
+    line-height: $button-size-2-height * .8;
+
+    height: $button-size-2-height * .8;
+    padding: 0 15px;
+  }
+}

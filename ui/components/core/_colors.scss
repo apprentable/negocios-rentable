@@ -1,0 +1,188 @@
+/**
+ * @name Colors
+ * @collection core
+*/
+
+/**
+ * @example
+   <example name="Colors">
+    <style>
+      .colors {
+        display: flex;
+      }
+
+      .colors__box {
+        flex-basis: 15%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        margin: 0 10px 10px;
+        padding-bottom: 10px;
+        border: 1px solid #696969
+      }
+
+      .colors__box:hover {
+        background-color: #fff;
+      }
+
+      .colors__color {
+        height: 100px;
+        margin-bottom: 10px;
+      }
+
+      .colors__hex {
+        margin-bottom: 8px;
+      }
+
+      code {
+        display: block;
+        text-align: center;
+      }
+    </style>
+    <file name="index.html" show="false">
+      <h3>Colors</h3>
+      <div class="colors">
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #000"></div>
+          <code class="colors__hex">#000</code>
+          <code class="colors__scss">$color-black</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #fff"></div>
+          <code class="colors__hex">#fff</code>
+          <code class="colors__scss">$color-white</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #fc2c99"></div>
+          <code class="colors__hex">#fc2c99</code>
+          <code class="colors__scss">$color-pink</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #18a3fa"></div>
+          <code class="colors__hex">#18a3fa</code>
+          <code class="colors__scss">$color-blue</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #ff9600"></div>
+          <code class="colors__hex">#ff9600</code>
+          <code class="colors__scss">$color-orange</code>
+        </div>
+      </div>
+
+      <h3>Background colors</h3>
+      <div class="colors">
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #3b3e43"></div>
+          <code class="colors__hex">#3b3e43</code>
+          <code class="colors__scss">$color-bg-gray-dark</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #eaeaec"></div>
+          <code class="colors__hex">#eaeaec</code>
+          <code class="colors__scss">$color-bg-gray-light</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #fc2c99"></div>
+          <code class="colors__hex">#fc2c99</code>
+          <code class="colors__scss">$color-bg-pink</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #18a3fa"></div>
+          <code class="colors__hex">#18a3fa</code>
+          <code class="colors__scss">$color-bg-blue</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #ff9600"></div>
+          <code class="colors__hex">#ff9600</code>
+          <code class="colors__scss">$color-bg-orange</code>
+        </div>
+      </div>
+
+      <h3>Text colors</h3>
+      <div class="colors">
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #343434"></div>
+          <code class="colors__hex">#343434</code>
+          <code class="colors__scss">$color-text-gray-dark</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #696969"></div>
+          <code class="colors__hex">#696969</code>
+          <code class="colors__scss">$color-text-gray-medium</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #b8bcbf"></div>
+          <code class="colors__hex">#b8bcbf</code>
+          <code class="colors__scss">$color-text-gray-medium-light</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #fc2c99"></div>
+          <code class="colors__hex">#fc2c99</code>
+          <code class="colors__scss">$color-text-pink</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #18a3fa"></div>
+          <code class="colors__hex">#18a3fa</code>
+          <code class="colors__scss">$color-text-blue</code>
+        </div>
+      </div>
+
+      <h3>Border colors</h3>
+      <div class="colors">
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #636465"></div>
+          <code class="colors__hex">#636465</code>
+          <code class="colors__scss">$color-border-gray-dark</code>
+        </div>
+        <div class="colors__box">
+          <div class="colors__color" style="background-color: #cccbcb"></div>
+          <code class="colors__hex">#cccbcb</code>
+          <code class="colors__scss">$color-border-gray-light</code>
+        </div>
+      </div>
+    </file>
+   </example>
+ */
+
+$color-black: #161616;
+$color-white: #fff;
+$color-pink: #fc2c99;
+$color-blue: #18a3fa;
+$color-orange: #f37021;
+
+$color-bg-gray-dark: #3b3e43;
+$color-bg-gray-light: #eaeaec;
+$color-bg-pink: $color-pink;
+$color-bg-blue: $color-blue;
+$color-bg-blue-light: #f2f4f7;
+$color-bg-orange: $color-orange;
+
+$color-text-white: #fff;
+$color-text-gray-dark: #343434;
+$color-text-gray-medium: #696969;
+$color-text-gray-medium-light: #afb1b3;
+$color-text-gray-light: #b8bcbf;
+$color-text-pink: $color-pink;
+$color-text-blue: $color-blue;
+$color-text-orange: $color-orange;
+
+$color-border-gray-dark: #636465;
+$color-border-gray-light: #cccbcb;
+$color-border-red: #fa0e0e;
+
+$color-shadow-very-pale-purple: #e0b5b5;
+
+$color-icon-gray-light: #f0f0f0;
+
+$body-bg: $color-white;
+$text-color: $color-text-gray-dark;
+$link-color: $color-blue;
+$link-color-gray: #919191;
+$link-color-white: $color-white;
+$link-color-black: $color-black;
+$link-color-hover: #0887d7;
+$link-color-active: #0573b8;
+
+// Heading
+$headings-color: $color-black;
+$headings-color-light: $color-white;

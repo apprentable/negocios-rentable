@@ -1,0 +1,19 @@
+<div>
+    <header class='header {% if include.color == "white" %}_white{% endif %}'>
+        <div class="g-container">
+            <div class="g-row _valign-stretch">
+                <div class="g-col-1">
+                    <span class='icon header__logo'></span>
+                </div>
+                <div class="g-col">
+                    {% include nav/global-nav.html color=include.color %}
+                </div>
+                <div class="g-col-2 _lg-3">
+                    {% include nav/search.html %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="header__placeholder"></div>
+</div>

@@ -1,0 +1,99 @@
+- company: JetBrains
+  url: http://www.jetbrains.com/
+  description: IntelliJ IDEA plugins, YouTrack vNext, CRM apps, new products etc.
+
+- company: Industrial Geodetic Systems
+  url: http://hive.geosystems.aero/?locale=en
+  description: Using Kotlin for the Front-End Web
+
+- company: Prezi.com
+  url: http://prezi.com
+  description: Kotlin in backend, data processing and service development
+
+- company: Bremeld Corp SA
+  url: http://linkedin.com/company/bremeld
+  description: Using Kotlin in data processing pipeline, ElasticSearch plugins, and IDE plugins
+
+- company: Igor Fomin
+  url: https://play.google.com/store/apps/details?id=ru.evilbloodydemon.pills
+  description: Medication Control - Android Application
+
+- company: Telegram
+  url: https://github.com/ex3ndr/telegram-tl
+  description: Data schema compiler for TL language implemented in Kotlin
+
+- company: Wrestler.Unstoppable
+  url: https://www.facebook.com/wrestler.unstoppable
+  description: Facebook Game with over 10K users daily. Written in Java and all new code in Kotlin
+
+- company: Plastoria
+  url:
+  description: Android Application used internally
+
+- company: Uncopt LLC
+  url: http://duofm.bitbucket.org
+  description: Android Application. Using Kotlin since M2
+
+- company: GMC
+  url: http://gmc.net
+  description: Using Kotlin to build a new Vertical Product with team of five
+
+- company: JackOfHearts
+  url: https://play.google.com/store/apps/details?id=truefool.android
+  description: True Fool. A Durak card game for Android written in Kotlin and libGDX
+  
+- company: Schibsted Tech Polska (Omni)
+  url: https://play.google.com/store/apps/details?id=se.omni
+  description: Android news application with 96.6% code written in Kotlin
+
+- company: Level Money
+  url: https://play.google.com/store/apps/details?id=com.levelmoney.mobile
+  description: Most new non-UI code written in Kotlin
+
+- company: AppDialer
+  url: https://play.google.com/store/apps/details?id=name.pilgr.appdialer
+  description: Fuzzy app/contact search and new UI written in Kotlin
+  
+- company: Busradar (Busliniensuche)
+  url: https://play.google.com/store/apps/details?id=de.raumobil.android.busliniensuche
+  description: Android app for searching bus trips with new features written in Kotlin since M9
+
+- company: AzaGroup
+  url: https://play.google.com/store/apps/details?id=azagroup.reedy
+  description: Reedy – Intelligent speed reading application for Android written in Kotlin
+
+- company: Collokia
+  url: https://www.collokia.com
+  description: Everything that isn't JavaScript front-end is Kotlin.  Combined with Vert.x, Apache Spark, ElasticSearch
+
+- company: Edible Day
+  url: http://edibleday.com
+  description: Using Kotlin in mobile applicatons and backend
+
+- company: Dojo Madness
+  url: http://dojomadness.com/
+  description: About 25% of LOLSUMO Android app currently in Kotlin (w/ Dagger2, RxKotlin) ; all new code and tests in Kotlin.
+  
+- company: Bryx 911
+  url: http://bryx911.com
+  description: Android app for helping first responders written in Kotlin
+  
+- company: DF Studio
+  url: http://www.dfstudio.com
+  description: Cloud-based enterprise and professional photography acquisition and workflow. Using Kotlin for server-side code and a desktop Download application.
+
+- company: 3D Robotics
+  url: https://3drobotics.com/
+  description: Using Kotlin in the 3DR Tower Android app, the best open source drone flight control app.
+
+- company: Trapit
+  url: https://trap.it
+  description: Built an Android app in the social selling space for Fortune 500 companies.
+
+- company: Wizbii
+  url: https://play.google.com/store/apps/details?id=com.wizbii.android
+  description: Android app for Wizbii, a professional social network for students and young graduates.
+
+- company: Roger
+  url: https://rogertalk.com
+  description: Kotlin allows us to focus on building a robust and beautiful Android voice communication app

@@ -1,0 +1,282 @@
+/**
+ * @name Utility Classes
+ * @collection core
+ */
+
+@import "./config";
+@import "./utils";
+
+
+/**
+ * @example
+ <example name="Text Classes" direction="row">
+    <style>
+      p {
+        margin-bottom: 30px;
+        margin-right: 20px;
+      }
+    </style>
+   <file name="example.html" show="false">
+     <p class="text-left">
+      <b>text-left</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minima nesciunt perspiciatis provident quae qui,
+      tempora? Aliquid blanditiis dicta iusto maiores necessitatibus, nesciunt nobis, pariatur quasi repellendus veritatis
+      voluptates voluptatum!
+     </p>
+     <p class="text-right">
+      <b>text-right</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minima nesciunt perspiciatis provident quae qui,
+      tempora? Aliquid blanditiis dicta iusto maiores necessitatibus, nesciunt nobis, pariatur quasi repellendus veritatis
+      voluptates voluptatum!
+     </p>
+     <p class="text-center">
+      <b>text-center</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minima nesciunt perspiciatis provident quae qui,
+      tempora? Aliquid blanditiis dicta iusto maiores necessitatibus, nesciunt nobis, pariatur quasi repellendus veritatis
+      voluptates voluptatum!
+     </p>
+     <p class="text-justify">
+      <b>text-justify</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minima nesciunt perspiciatis provident quae qui,
+      tempora? Aliquid blanditiis dicta iusto maiores necessitatibus, nesciunt nobis, pariatur quasi repellendus veritatis
+      voluptates voluptatum!
+     </p>
+     <p class="text-nowrap">
+      <b>text-nowrap</b>  Lorem ipsum dolor sit amet
+     </p>
+     <p class="text-uppercase">
+      <b>text-uppercase</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minima nesciunt perspiciatis provident quae qui,
+      tempora? Aliquid blanditiis dicta iusto maiores necessitatibus, nesciunt nobis, pariatur quasi repellendus veritatis
+      voluptates voluptatum!
+     </p>
+     <p class="text-lowercase">
+      <b>text-lowercase</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minima nesciunt perspiciatis provident quae qui,
+      tempora? Aliquid blanditiis dicta iusto maiores necessitatibus, nesciunt nobis, pariatur quasi repellendus veritatis
+      voluptates voluptatum!
+     </p>
+   </file>
+
+   <file name="index.html" webpack="false">
+      <p class="text-left"><!-- text goes here --></p>
+      <p class="text-right"><!-- text goes here --></p>
+      <p class="text-center"><!-- text goes here --></p>
+      <p class="text-justify"><!-- text goes here --></p>
+      <p class="text-nowrap"><!-- text goes here --></p>
+      <p class="text-lowercase"><!-- text goes here --></p>
+      <p class="text-uppercase"><!-- text goes here --></p>
+   </file>
+
+   <file name="index.js" webpack="true" show="false">
+    require('core/utility-classes.scss');
+   </file>
+ </example>
+*/
+@include make-breakpoints('.text-left') { text-align: left; }
+@include make-breakpoints('.text-right') { text-align: right;}
+@include make-breakpoints('.text-center') { text-align: center;}
+@include make-breakpoints('.text-justify') { text-align: justify;}
+@include make-breakpoints('.text-nowrap') { white-space: nowrap}
+@include make-breakpoints('.text-lowercase') {text-transform: lowercase;}
+@include make-breakpoints('.text-uppercase') { text-transform: uppercase;}
+@include make-breakpoints('.text-line-through') { text-decoration: line-through;}
+
+/**
+ * @example
+ <example name="Floating" direction="row">
+    <style>
+    .button {margin-bottom: 20px;}
+   </style>
+   <file name="index.html">
+     <div class="clearfix">
+      Clearfix class
+      <a href=# class="button float-left">Float left</a>
+     </div>
+     <div class="clearfix">
+      Clearfix class
+      <a href=# class="button float-right">Float right</a>
+     </div>
+     <a href=# class="button float-none">Float none</a>
+   </file>
+
+   <file name="index.js" webpack="true" show="false">
+    require('button');
+    require('core/utility-classes.scss');
+   </file>
+ </example>
+*/
+@include make-breakpoints('.float-left') {
+  @extend .clearfix;
+  float: left;
+}
+@include make-breakpoints('.float-right') {
+  @extend .clearfix;
+  float: right;
+}
+@include make-breakpoints('.float-none') { float: none;}
+// Clearfix
+.clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/**
+ * @example
+   <example name="Visibility">
+   </example>
+ * @description
+### Hidden
+
+`hidden` - hide element on all breakpoints
+
+`hidden-lg` - hide on large breakpoint
+
+`hidden-md` - hide on medium breakpoint
+
+`hidden-sm` - hide on small breakpoint
+
+### Visible
+
+`visible` - show element on all breakpoints
+
+`visible-lg` - show on large breakpoint
+
+`visible-md` - show on medium breakpoint
+
+`visible-sm` - show on small breakpoint
+*/
+@include make-breakpoints('.hidden') { display: none !important;}
+@include make-breakpoints('.visible') { display: block !important;}
+
+
+/**
+ * @example
+   <example name="NO Margin">
+   </example>
+ * @description
+`margin-auto`
+
+`no-margin-top`
+
+`no-margin-right`
+
+`no-margin-bottom`
+
+`no-margin-left`
+
+*/
+@include make-breakpoints ('.margin-auto') {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+@include make-breakpoints ('.no-margin-top') { margin-top: 0 !important; }
+@include make-breakpoints ('.no-margin-right') { margin-right: 0 !important; }
+@include make-breakpoints ('.no-margin-bottom') { margin-bottom: 0 !important;}
+@include make-breakpoints ('.no-margin-left') { margin-left: 0 !important;}
+
+/**
+ * @example
+   <example name="Margin">
+   </example>
+ * @description
+ ### Margin-top
+`margin-top-vertical-unit`
+
+`margin-top-vertical-unit-sm`
+
+`margin-top-vertical-unit-md`
+
+`margin-top-vertical-unit-lg`
+
+`margin-top-vertical-unit-xlg`
+
+### Margin-bottom
+`margin-bottom-vertical-unit`
+
+`margin-bottom-vertical-unit-sm`
+
+`margin-bottom-vertical-unit-md`
+
+`margin-bottom-vertical-unit-lg`
+
+`margin-bottom-vertical-unit-xlg`
+
+*/
+
+@include make-breakpoints ('.margin-top-vertical-unit') { margin-top: $vertical-unit; }
+@include make-breakpoints ('.article-content .margin-top-vertical-unit') { margin-top: $vertical-unit; }
+@include make-breakpoints ('.margin-bottom-vertical-unit') { margin-bottom: $vertical-unit; }
+@include make-breakpoints ('.article-content .margin-bottom-vertical-unit') { margin-bottom: $vertical-unit; }
+
+/**
+ * @example
+   <example name="Margin half">
+   </example>
+ * @description
+ ### Margin-top
+`margin-top-vertical-unit-half`
+
+`margin-top-vertical-unit-half-sm`
+
+`margin-top-vertical-unit-half-md`
+
+`margin-top-vertical-unit-half-lg`
+
+`margin-top-vertical-unit-half-xlg`
+
+### Margin-bottom
+`margin-bottom-vertical-unit-half`
+
+`margin-bottom-vertical-unit-half-sm`
+
+`margin-bottom-vertical-unit-half-md`
+
+`margin-bottom-vertical-unit-half-lg`
+
+`margin-bottom-vertical-unit-half-xlg`
+
+*/
+
+@include make-breakpoints ('.margin-top-vertical-unit-half') { margin-top: $vertical-unit / 2; }
+@include make-breakpoints ('.article-content .margin-top-vertical-unit-half') { margin-top: $vertical-unit / 2; }
+@include make-breakpoints ('.margin-bottom-vertical-unit-half') { margin-bottom: $vertical-unit / 2; }
+@include make-breakpoints ('.article-content .margin-bottom-vertical-unit-half') { margin-bottom: $vertical-unit / 2; }
+
+/**
+ * @example
+   <example name="Padding">
+   </example>
+ * @description
+`no-padding-top`
+
+`no-padding-right`
+
+`no-padding-bottom`
+
+`no-padding-left`
+
+*/
+@include make-breakpoints ('.no-padding-top') { padding-top: 0 !important;}
+@include make-breakpoints ('.no-padding-bottom') { padding-bottom: 0 !important;}
+@include make-breakpoints ('.no-padding-left') { padding-left: 0 !important;}
+@include make-breakpoints ('.no-padding-right') { padding-right: 0 !important; }
+
+
+/**
+ * @example
+   <example name="Positioning">
+   </example>
+ * @description
+`position-relative`
+
+`z-index-1`
+*/
+.z-index-1 {
+  z-index: 1;
+}
+
+.position-relative {
+  position: relative;
+}

@@ -1,0 +1,137 @@
+/**
+ * @name Core config file
+ * @version 1.0
+ * @description Config on core styles
+ */
+@import "./colors";
+
+// Variables
+$vertical-unit: 50px;
+
+// Typography
+$font-family-sans-serif: "Gotham SSm A", "Gotham SSm B", Helvetica, Arial, sans-serif;
+$font-family-serif: Georgia, "Times New Roman", Times, serif;
+$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-base: $font-family-sans-serif;
+
+$font-size-base: 14px;
+$line-height-base-rate: 1.667;
+
+// Tables
+$table-cell-padding: 8px;
+$table-condensed-cell-padding: 5px;
+
+// Breakpoints configuration
+$default: 'default';
+$sm: 'sm';
+$md: 'md';
+$lg: 'lg';
+$xlg: 'xlg';
+
+$block-delimiter: '-';
+$element-delimiter: '-';
+$modifier-delimiter: '._';
+
+$width-xs: 0; // Default
+$width-sm: 640; // Small screens 640
+$width-md: 960; // Medium screens
+$width-lg: 1200; // Large screens
+$width-xlg: 1440; // Extra large screens
+
+$viewport-xs: #{$width-xs}px;
+$viewport-sm: #{$width-sm}px;
+$viewport-md: #{$width-md}px;
+$viewport-lg: #{$width-lg}px;
+$viewport-xlg: #{$width-xlg}px;
+
+$defaultQuery: $viewport-xs;
+$sizes: ($xlg $lg $md $sm $default);
+$sizes-revers: ($default $xlg $lg $md $sm); // для генерации оффсетов в обратном направлении
+$queries: (#{$default}:#{$viewport-xs}, #{$sm}:#{$viewport-sm}, #{$md}:#{$viewport-md}, #{$lg}:#{$viewport-lg}, #{$xlg}:#{$viewport-xlg});
+
+// Content container paddings
+$content-container-outer-padding: 80px;
+$content-container-outer-padding-lg: 40px;
+$content-container-outer-padding-md: 20px;
+$content-container-outer-padding-sm: 15px;
+
+// Content conteiner max-width
+$content-container-max-width: 1620px;
+
+// Transitions
+$transition-xfast: 200ms;
+$transition-fast: 300ms;
+$transition-medium: 500ms;
+$transition-long: 1000ms;
+
+// Z-indexes
+$z-index-basis: 1000;
+$z-index-popup: 999999;
+$z-index-home-page-video: $z-index-basis + 999999;
+$z-index-no-supported-browser: $z-index-home-page-video + 1;
+$page-header-z-index: $z-index-basis + 1;
+$page-sidebar-z-index: $page-header-z-index - 1;
+$toc-z-index: $z-index-basis;
+$dropdown-z-index: $page-header-z-index - 1;
+
+// Headings
+// h1
+$h1-font-size: 44px;
+$h1-line-height: 45px;
+$h1-margin-top: 70px;
+$h1-margin-bottom: 50px;
+$h1-size-ratio-sm: 0.8;
+$h1-margin-ratio-sm: 0.6;
+
+// h1-big
+$h1-big-font-size: 54px;
+$h1-big-line-height: 55px;
+$h1-big-size-ratio-sm: 0.7;
+$h1-big-margin-ratio-sm: 0.6;
+
+// h1-extra-big
+$h1-extra-big-font-size: 70px;
+$h1-extra-big-line-height: 70px;
+$h1-extra-big-size-ratio-sm: 0.7;
+$h1-extra-big-margin-ratio-sm: 0.6;
+
+// h2
+$h2-font-size: 36px;
+$h2-line-height: 45px;
+$h2-margin-top: 30px;
+$h2-margin-bottom: 20px;
+$h2-size-ratio-sm: 0.8;
+$h2-margin-ratio-sm: 0.8;
+
+// h3
+$h3-font-size: 22px;
+$h3-line-height: 25px;
+$h3-margin-top: 30px;
+$h3-margin-bottom: 15px;
+$h3-size-ratio-sm: 0.8;
+$h3-margin-ratio-sm: 0.6;
+
+// h4
+$h4-font-size: 14px;
+$h4-line-height: 22px;
+$h4-margin-top: 25px;
+$h4-margin-bottom: 15px;
+$h4-size-ratio-sm: 0.8;
+$h4-margin-ratio-sm: 0.6;
+
+// Subtitle
+$subtitle-font-size: 20px;
+$subtitle-big-font-size: 36px;
+$subtitle-big-line-height: 45px;
+$subtitle-line-height: 30px;
+$subtitle-margin-top:0px;
+$subtitle-margin-bottom: 40px;
+$subtitle-size-ratio-sm: 0.8;
+
+// Article-content
+$article-content-vertical-unit: $vertical-unit;
+$article-content-font-family: $font-family-base;
+$article-content-text-color: $color-text-gray-dark;
+$article-content-link-color: $link-color;
+$article-content-link-color-hover: $link-color-hover;
+$article-content-link-color-active: $link-color-active;

@@ -1,0 +1,287 @@
+---
+layout: index
+title: Kotlin Programming Language
+---
+
+<div id="fullpage">
+
+    <section class="introduction-section section">
+        {% include header.html %}
+
+        <div class="introduction-section__background">
+            <img src="ui/images/top-background.svg">
+        </div>
+
+        <div class="section__content">
+            <div class="g-container">
+                <div class="g-row _justify-center text-center">
+                    <div class="g-col">
+                        <span class="icon introduction-section__kotlin-icon"></span>
+                    </div>
+                </div>
+
+                <div class="g-row _justify-center text-center">
+                    <div class="g-col">
+                        <h1 class="introduction-section__header">
+                            Programming&nbsp;language.<br/>Android.&nbsp;JVM.&nbsp;Browser.
+                        </h1>
+                        <p class="introduction-section__sub-title">
+                            Kotlin is an open-source modern programming language that<br/>
+                            JetBrains has been working on for quite some time now
+                        </p>
+
+                        <a class="button _dark try-now-button">Try now</a>
+                    </div>
+                </div>
+                <div class="g-row _justify-center text-center">
+                    <div class="g-col beta-announcement">
+                        We are extremely pleased to present Kotlin 1.0 for JVM and Android!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer footer">
+            <div class="footer__main">
+                <div class="g-container">
+                    <div class="g-row _justify-center text-center">
+                        <div class="g-col-4">
+                            <div class="learn-more-button">
+                                <div class="learn-more-button__text">Learn More</div>
+                                <div class="icon learn-more-button__arrow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__main-placeholder"></div>
+        </div>
+    </section>
+
+    <section class="examples-section section">
+        {% include header.html color="white" %}
+
+        <div class="g-container">
+            <div class="g-row">
+                <div class="g-col-12">
+                    <h1 class="examples-section__header">A Few More Things</h1>
+                </div>
+            </div>
+
+            <div class="g-row">
+                <div class="g-col-3">
+                    <div class="tabs__tab is-active" data-id="hello-world-tab">
+                        <span class="icon tabs__icon _hello"></span>
+                        <span>Hello World</span>
+                    </div>
+                    <div class="tabs__tab" data-id="concise-tab">
+                        <span class="icon tabs__icon _concise"></span>
+                        <span>Concise</span>
+                    </div>
+                    <div class="tabs__tab" data-id="safe-tab">
+                        <span class="icon _safe"></span>
+                        <span>Safe</span>
+                    </div>
+                    <div class="tabs__tab" data-id="java-tab">
+                        <span class="icon _java"></span>
+                        <span>Java Interopable</span>
+                    </div>
+                    <div class="tabs__tab" data-id="first-tab">
+                        <span class="icon _android"></span>
+                        <span>Android Friendly</span>
+                    </div>
+                    <div class="tabs__tab" data-id="tooling-tab">
+                        <span class="icon _tooling"></span>
+                        <span>Tooling</span>
+                    </div>
+                    <div class="tabs__tab" data-id="dsl-tab">
+                        <span class="icon _dsl"></span>
+                        <span>DSL</span>
+                    </div>
+                    <div class="tabs__tab" data-id="web-tab">
+                        <span class="icon _web"></span>
+                        <span>Web</span>
+                    </div>
+                    <div class="tabs__tab" data-id="easy-tab">
+                        <span class="icon _easy"></span>
+                        <span>Easy to learn</span>
+                    </div>
+                </div>
+                <div class="g-col-9">
+                    <div class="tabs__pane is-active" data-tab-id="first-tab">
+                        <h2 class="no-margin-top _color-light">Building Android app was never that easy. One line of
+                            code goes for one piece of ui element</h2>
+                        <pre class="code-sample">
+interface A {
+    fun foo() { print("A") }
+    fun bar()
+}
+
+interface B {
+    fun foo() { print("B") }
+    fun bar() { print("bar") }
+}
+
+class C : A {
+    override fun bar() { print("bar") }
+}
+
+class D : A, B {
+    override fun foo() {
+        super&lt;A&gt;.foo()
+        super&lt;B&gt;.foo()
+    }
+}
+                        </pre>
+                    </div>
+                    <div class="tabs__pane" data-tab-id="second-tab"></div>
+                </div>
+
+            </div>
+            <div class="g-row _justify-end text-right">
+                <div class="g-col-3">
+                    <a class="button _secondary _light">Play with it in online demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials-section">
+        {% include header.html %}
+
+        <div class="g-container">
+            <div class="g-row">
+                <div class="g-col-5 _lg-6">
+                    <h1 class="testimonials-slide__header">
+                        some testimonials
+                    </h1>
+                    <div class="testimonials-slide__sub-title">4 years of thorough work and careful development have
+                        proved something.
+                    </div>
+                </div>
+            </div>
+            <div class="g-row">
+                <div class="g-col">
+                    <img class="testimonials-slide__image" src="ui/images/Graph.png">
+                </div>
+            </div>
+            <div class="g-row testimonials-slide__customers">
+                <div class="g-col-4 _spacer customer-block">
+                    Evolver group development team has significantly improved its productivity
+                    using Kotlin, thanks to superior performance ...
+                    <div class="customer-block__customer">
+                        Arunas Paskevicius<br/>
+                        Web Developer at Devbridge Group
+                    </div>
+                </div>
+                <div class="g-col-4 _spacer customer-block">
+                    Kotlin is a requirement from my side; I don't want to open up IntelliJ IDEA without it enabled.
+                </div>
+                <div class="g-col-4 _spacer customer-block">
+                    We have tested Kotlin extensively and we are convinced that it is a very stable and consistent
+                    product.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section footer-section">
+        <div class="footer-section__background">
+            <img src="ui/images/bottom_background.svg">
+        </div>
+
+        {% include header.html color="white" %}
+
+        <div class="footer-section__content">
+            <div class="g-container">
+                <div class="g-row justify-center text-center">
+                    <div class="g-col">
+                        <h1>Kotlin is easy.<br/> Just try it</h1>
+                    </div>
+                </div>
+                <div class="g-row _justify-center text-center">
+                    <div class="g-col-6  _lg-8 _md-10 _sm-12 get-kotlin-options-list">
+                        <div class="get-kotlin-option">
+                            <div class="get-kotlin-option__icon">
+                                <div class="icon _online-demo"></div>
+                            </div>
+                            <div class="get-kotlin-option__what">Online demo</div>
+                            <div class="get-kotlin-option__where">in Browser</div>
+                        </div>
+                        <div class="get-kotlin-option">
+                            <div class="get-kotlin-option__icon">
+                                <div class="icon _idea"></div>
+                            </div>
+                            <div class="get-kotlin-option__what">Plugin for</div>
+                            <div class="get-kotlin-option__where">IntelliJ Idea</div>
+                        </div>
+                        <div class="get-kotlin-option">
+                            <div class="get-kotlin-option__icon">
+                                <div class="icon _eclipse"></div>
+                            </div>
+                            <div class="get-kotlin-option__what">Plugin for</div>
+                            <div class="get-kotlin-option__where">Eclipse</div>
+                        </div>
+                        <div class="get-kotlin-option">
+                            <div class="get-kotlin-option__icon">
+                                <div class="icon _standalone"></div>
+                            </div>
+                            <div class="get-kotlin-option__what">Standalone</div>
+                            <div class="get-kotlin-option__where">Compiler</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer footer">
+            <div class="footer__main">
+                <div class="g-container">
+                    <div class="g-row _justify-center">
+                        <div class="g-col-3 _lg-4 _md-8 _sm-10 socials-list">
+                            <div class="social-link">
+                                <div class="social-link__icon">
+                                    <span class="icon _github"></span>
+                                </div>
+                                <div class="social-link__text">GitHub</div>
+                            </div>
+                            <div class="social-link">
+                                <div class="social-link__icon">
+                                    <span class="icon _twitter"></span>
+                                </div>
+                                <div class="social-link__text">Twitter</div>
+                            </div>
+                            <div class="social-link">
+                                <div class="social-link__icon">
+                                    <span class="icon _forum"></span>
+                                </div>
+                                <div class="social-link__text">Forum</div>
+                            </div>
+                            <div class="social-link">
+                                <div class="social-link__icon">
+                                    <span class="icon _slack"></span>
+                                </div>
+                                <div class="social-link__text">Slack</div>
+                            </div>
+                            <div class="social-link">
+                                <div class="social-link__icon">
+                                    <span class="icon _youtrack"></span>
+                                </div>
+                                <div class="social-link__text">Bug tracker</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-row _justify-center text-center">
+                        <div class="g-col-4">
+                            <div class="copyright">
+                                &copy; 2016, JetBrains
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__main-placeholder"></div>
+        </div>
+    </section>
+</div>
+

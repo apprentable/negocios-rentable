@@ -1,0 +1,45 @@
+<nav role="navigation" class='header__menu float-right'>
+    {% assign nav = site.data._nav.main %}
+    {% for i in nav %}
+        {% assign item_id = i[0] %}
+        {% assign item = i[1] %}
+        {% assign is_active = false %}
+        {% assign is_external = false %}
+
+        {% if item.show != null and item.show == false %}
+            {% break %}
+        {% endif %}
+
+        {% if include.active and include.active == item_id %}
+            {% assign is_active = true %}
+        {% endif %}
+
+        {% if item.url contains 'http://' %}
+            {% assign is_external = true %}
+        {% endif %}
+
+        <div class="header__menu-item {% if item.items %} _has-dropdown {% endif %}">
+            {% if item.items %}
+                <div class='header__menu-item-link {% if include.color == "white" %} _white {% endif %}'>
+                    {{ item.title }}
+                </div>
+                <div class="header__dropmenu">
+                    {% for j in item.items %}
+                        {% assign subitem_id = j[0] %}
+                        {% assign subitem = j[1] %}
+                        <div class="header__dropmenu-item">
+                            <div class="icon _{{subitem_id}}"></div>
+                            <a class="header__dropmenu-item-link" href="{{ subitem.url }}">{{ subitem.title }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <a href="{% if is_external %}{{ item.url }}{% else %}{{ site.baseurl }}{{ item.url }}{% endif %}"
+                   class='header__menu-item-link {% if include.color == "white" %} _white {% endif %}'
+                >
+                    {{ item.title }}
+                </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</nav>

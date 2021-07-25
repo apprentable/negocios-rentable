@@ -1,0 +1,263 @@
+/**
+ * @name Grid Utils
+ * @version 1.0
+ * @requires ./config
+ * @description Utils on responsive flexbox grid
+ */
+
+@import "config";
+@import "../core/utils";
+
+/**
+ * Returns the options on auto width classes
+ */
+
+@mixin autoWidth {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+
+/**
+ * Returns percent width of column spacer (half of grid unit width)
+ * @param $grid-unit-size Grid unit size (from 1 to 12)
+ * @return [Sass::Script::Value::Number] Spacer percentage width
+*/
+@function calculate-column-spacer-width($grid-unit-size) {
+  $width: $grid-unit-size / $column-count;
+  $stretched-width: ($grid-unit-size + 0.5) / $column-count;
+  @return percentage($stretched-width / $width) - 100;
+}
+
+/**
+ * Returns the options on percent width classes
+ * @param {String} $property
+ * @param {Number} $columns
+ * @param {Number} $count
+ */
+
+@mixin percentWidth(
+  $property,
+  $columns,
+  $count) {
+
+  #{$property}: ((100% / $columns) * $count);
+}
+
+/**
+ * Returns the @content
+ * @param {String} $selector
+ * @param {List} $properties
+ * @param {Number} $columns
+ * @param {Map} $queries
+ */
+@mixin make-columns(
+  $selector: $column-selector,
+  $properties: $column-properties,
+  $columns: $column-count,
+  $queries: $queries) {
+
+    @each $size in $sizes {
+      @include queries($size, $queries) {
+        @for $i from 0 through $columns {
+          @if ($i == 0) {
+            @if ($size == $default) {
+              #{$selector} {
+                @content;
+                @include autoWidth();
+              }
+            }
+            @else {
+              @for $i from 0 through $columns {
+                @if ($i == 0) {
+                  #{$selector}#{$modifier-delimiter}#{$size} {
+                    @include autoWidth();
+                  }
+                } @else{
+                  #{$selector}#{$block-delimiter}#{$i}#{$modifier-delimiter}#{$size} {
+                    @include autoWidth();
+                  }
+                }
+              }
+            }
+          } @else {
+            @if ($size == $default) {
+              #{$selector}#{$block-delimiter}#{$i} {
+                @content;
+                @each $prop in $properties {
+                  @include percentWidth($prop, $columns, $i);
+                }
+              }
+            }
+            @else {
+              @for $j from 0 through $columns {
+                @if ($j == 0){
+                  #{$selector}#{$modifier-delimiter}#{$size}#{$block-delimiter}#{$i} {
+                    @each $prop in $properties {
+                      @include percentWidth($prop, $columns, $i);
+                    }
+                  }
+                } @else{
+                  #{$selector}#{$block-delimiter}#{$j}#{$modifier-delimiter}#{$size}#{$block-delimiter}#{$i} {
+                    @each $prop in $properties {
+                      @include percentWidth($prop, $columns, $i);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
+
+/**
+ * Returns the options on spacer
+ * @param {String} $property
+ * @param {Number} $columns
+ * @param {Number} $count
+ */
+@mixin percentSpacer(
+  $property,
+  $columns) {
+  $single-column-width: ((100% / $columns) * 1);
+  #{$property}: $single-column-width / 2;
+}
+
+/**
+ * Returns the @content
+ * @param {String} $selector
+ * @param {String} $modifier-selector
+ * @param {Number} $columns
+ * @param {Map} $queries
+ * @returns {String}
+ */
+@mixin make-spacers(
+  $selector: $column-selector,
+  $spacer-modifier: $spacer-modifier,
+  $properties: $spacer-properties,
+  $columns: $column-count
+){
+  $spacer-modifier-postfix: '-0';
+  // Цикл начинаем с 1, а не с 0, чтобы не было .g-col-0 и соответственно не генерить для таких классов спейсеры
+  @for $j from 1 through $columns { // итеррируемся по количеству колонок для формирования индекса колонки (.g-col-1, .g-col-2 и т.д.)
+    #{$selector}#{$block-delimiter}#{$j}#{$modifier-delimiter}#{$spacer-modifier} {
+      @each $prop in $properties {
+        @include percentSpacer($prop, $columns);
+      }
+    }
+  }
+
+  // Генерим обнуляющие спейсер классы для всех брейков
+  @each $size in $sizes-revers { // обходим все брейки, которые лежат в $sizes-revers
+      @include queries($size, $queries) { // передаем текущий брейк для генерации @media
+        @if ($size != $default) { // НЕ генерим обнуляющий спейсер вне брейка
+          @for $j from 1 through $columns { // итеррируемся по количеству колонок для формирования индекса колонки (.g-col-1, .g-col-2 и т.д.)
+            #{$selector}#{$block-delimiter}#{$j}#{$modifier-delimiter}#{$spacer-modifier}#{$block-delimiter}#{$size}#{$spacer-modifier-postfix} {
+              padding-right: 0;
+            }
+          }
+        }
+      }
+    }
+}
+
+/**
+ * Returns the options on offsets
+ * @param {String} $property
+ * @param {Number} $columns
+ * @param {Number} $count
+ */
+@mixin percentOffset(
+  $property,
+  $columns,
+  $count) {
+
+  $single-column-width: ((100% / $columns) * 1);
+  #{$property}: $single-column-width * $count;
+}
+
+/**
+ * Returns the @content
+ * @param {String} $selector
+ * @param {String} $modifier-selector
+ * @param {Number} $columns
+ * @param {Map} $queries
+ * @returns {String}
+ */
+@mixin make-offsets(
+  $selector: $column-selector,
+  $offset-modifier: $offset-modifier,
+  $properties: $offset-properties,
+  $columns: $column-count,
+  $queries: $queries) {
+
+    @each $size in $sizes-revers { // обходим все брейки, которые лежат в $sizes-revers
+      @include queries($size, $queries) { // передаем текущий брейк для генерации @media
+        @for $i from 0 through $columns - 1 { // итеррируемся по количеству колонок для формирования индекса оффсета (._offset-0, ._offset-1 и т.д.)
+          @if ($size == $default) { // создаем дефолтные оффсеты БЕЗ префиксов брейков (-sm, -md, -lg)
+            @for $j from 0 through $columns { // итеррируемся по количеству колонок для формирования индекса колонки (.g-col-1, .g-col-2 и т.д.)
+              @if ($j == 0) { // генерируем класс колонки без индекса -0 (.g-col)
+                #{$selector}#{$modifier-delimiter}#{$offset-modifier}#{$block-delimiter}#{$i} {
+                  @each $prop in $properties {
+                    @include percentOffset($prop, $columns, $i);
+                  }
+                }
+              } @else { // генерируем класс колонки с индексами -1, -2 и т.д.
+                #{$selector}#{$block-delimiter}#{$j}#{$modifier-delimiter}#{$offset-modifier}#{$block-delimiter}#{$i} {
+                  @each $prop in $properties {
+                    @include percentOffset($prop, $columns, $i);
+                  }
+                }
+              }
+            }
+          } @else { // создаем оффсеты для брейков с префиксами (-sm, -md, -lg)
+            @for $j from 0 through $columns { // итеррируемся по количеству колонок для формирования индекса колонки (.g-col-1, .g-col-2 и т.д.)
+              @if ($j == 0) { // генерируем класс колонки без индекса -0 (.g-col)
+                #{$selector}#{$modifier-delimiter}#{$offset-modifier}#{$block-delimiter}#{$size}#{$block-delimiter}#{$i} {
+                  @each $prop in $properties {
+                    @include percentOffset($prop, $columns, $i);
+                  }
+                }
+              } @else { // генерируем класс колонки с индексами -1, -2 и т.д.
+                #{$selector}#{$block-delimiter}#{$j}#{$modifier-delimiter}#{$offset-modifier}#{$block-delimiter}#{$size}#{$block-delimiter}#{$i} {
+                  @each $prop in $properties {
+                    @include percentOffset($prop, $columns, $i);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}
+
+/**
+ * Returns the options
+ */
+@mixin flex-direction() {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/**
+ * Returns the options
+ */
+@mixin grid-column() {
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+}
+
+/**
+ * Returns stretched percent width of column child block
+ * @param {Number} col-size
+*/
+@mixin stretch-column-inner-block($col-size) {
+  $width: $col-size / $column-count;
+  $stretched-width: ($col-size + 0.5) / $column-count;
+  width: percentage($stretched-width / $width);
+}

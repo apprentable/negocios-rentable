@@ -1,0 +1,190 @@
+@import "./config";
+@import "../core/utils";
+@import "./utils";
+
+.header {
+    position: absolute;
+    top: 0;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+
+    height: $header-height;
+    background-color: $header-bg-color;
+    color: $header-text-color;
+
+    &._white {
+        .header-menu-item-link {
+            color: $color-text-white;
+        }
+    }
+}
+
+.header__logo {
+    display: block;
+    position: relative;
+    width: 103px;
+    height: 23px;
+    background: url("../../images/logos/kotlin_small.svg") no-repeat;
+    top: 22px;
+
+    .header._white & {
+        background: url("../../images/logos/kotlin_small_white.svg") no-repeat;
+    }
+}
+
+.header__placeholder {
+    height: $header-height;
+}
+
+.header__menu {
+    display: flex;
+}
+
+.header__menu-item {
+    position: relative;
+
+    &._has-dropdown {
+        .header__dropmenu {
+            display: none;
+        }
+
+        &::after {
+            position: absolute;
+            top: 37px;
+            margin-top: -3px;
+            right: 11px;
+
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 4px 0 4px;
+            border-color: #000000 transparent transparent transparent;
+            content: "";
+        }
+
+        &:hover {
+            &::after {
+                transform: rotate(180deg);
+            }
+
+            .header__menu-item-link {
+                @extend %header-menu-item-link%_hover;
+            }
+
+            .header__dropmenu {
+                display: block;
+            }
+        }
+    }
+}
+
+.header__menu-item-link {
+    float: left;
+
+    .header & {
+        @extend %header-menu-item-link
+    }
+
+    .header__menu-item._has-dropdown &{
+        border: 1px solid transparent;
+        border-bottom: 0;
+        padding-right: 21px;
+    }
+
+    .header__menu-item._has-dropdown:hover &{
+        border-color: $color-border-gray-dark;
+    }
+
+    .header._white & {
+        @extend %header-menu-item-link%_white;
+    }
+}
+
+.header__dropmenu {
+    position: absolute;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    margin-top: -5px;
+    padding-top: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+
+    ._float-right & {
+        left: auto;
+        right: 0;
+    }
+}
+
+.header__dropmenu-item {
+    .header & {
+        @extend %header-menu-item-link;
+        background-color: white;
+        margin: 0;
+        font-size: 12px;
+        border-left: 1px solid $color-border-gray-dark;
+        border-right: 1px solid $color-border-gray-dark;
+        padding-left: 5px;
+
+        &:last-child {
+            border-bottom: 1px solid $color-border-gray-dark;
+        }
+
+        &:hover {
+            @extend %header-menu-item-link%_hover;
+        }
+    }
+
+    .icon {
+        &._slack {
+            width: 16px;
+            height: 16px;
+            top: 3px;
+
+            background-image: svg("ui/images/slack", '[fill]:#3b3e43');
+        }
+
+        &._twitter {
+            width: 16px;
+            height: 13px;
+            top: 2px;
+
+            background-image: svg("ui/images/twitter", '[fill]:#3b3e43');
+        }
+
+        &._forum {
+            width: 16px;
+            height: 13px;
+            top: 2px;
+
+            background-image: svg("ui/images/forum", '[fill]:#3b3e43');
+        }
+
+        &._github {
+            width: 16px;
+            height: 16px;
+            top: 3px;
+
+            background-image: svg("ui/images/github", '[fill]:#3b3e43');
+        }
+
+        &._youtrack {
+            width: 16px;
+            height: 16px;
+            top: 3px;
+
+            background-image: svg("ui/images/youtrack", '[fill]:#3b3e43');
+        }
+    }
+}
+
+.header__dropmenu-item-link {
+    color: $header-text-color;
+    padding-left: 3px;
+}

@@ -1,0 +1,20 @@
+@import "config";
+@import "utils";
+
+.dev-tool-grid {
+  max-width: $container-max-width !important;
+  min-width: $body-min-width;
+  padding: 0 $outer-padding;
+
+  @include make-break-lg () {
+    padding: 0 $outer-padding-lg;
+  }
+
+  @include make-break-md () {
+    padding: 0 $outer-padding-md;
+  }
+
+  @include make-break-sm () {
+    padding: 0 $outer-padding-sm;
+  }
+}

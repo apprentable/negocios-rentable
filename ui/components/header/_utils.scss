@@ -1,0 +1,25 @@
+@import "config";
+
+%header-menu-item-link {
+    margin-top: 17px;
+    box-sizing: border-box;
+    transition: all $header-transition-time;
+    cursor: pointer;
+
+    padding: 10px 5px 10px 27px;
+
+    color: $header-text-color;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &%_white {
+        color: $header-white-text-color;
+    }
+
+    &%_hover {
+        background-color: $header-item-bg-hover-color;
+        color: $header-item-hover-color;
+    }
+}

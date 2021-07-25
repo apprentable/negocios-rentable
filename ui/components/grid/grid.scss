@@ -1,0 +1,137 @@
+@import "config";
+@import "utils";
+
+// Content container
+#{$grid-prefix}#{container} {
+  position: relative;
+  width: $container-width;
+  max-width: $container-max-width;
+
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $outer-padding;
+  padding-left: $outer-padding;
+
+  box-sizing: border-box;
+
+  @include make-break-lg () {
+    padding-right: $outer-padding-lg;
+    padding-left: $outer-padding-lg;
+  }
+
+  @include make-break-md () {
+    padding-right: $outer-padding-md;
+    padding-left: $outer-padding-md;
+  }
+
+  @include make-break-sm () {
+    padding-right: $outer-padding-sm;
+    padding-left: $outer-padding-sm;
+  }
+}
+
+// Row cols container
+#{$grid-prefix}#{row} {
+  @include flex-direction();
+  flex-direction: row;
+}
+
+// Create cols (.g-col)
+@include make-columns() {
+  @include grid-column();
+}
+
+// Create ._offsets
+@include make-offsets();
+
+// Create ._spacers
+@include make-spacers();
+
+//
+// Helpers
+
+// _justify cols
+@include make-breakpoints('.g-row._justify-start') {
+  justify-content: flex-start;
+}
+@include make-breakpoints('.g-row._justify-center') {
+  justify-content: center;
+}
+@include make-breakpoints('.g-row._justify-end') {
+  justify-content: flex-end;
+}
+@include make-breakpoints('.g-row._justify-around') {
+  justify-content: space-around;
+}
+@include make-breakpoints('.g-row._justify-between') {
+  justify-content: space-between;
+}
+
+// _valign cols
+@include make-breakpoints('.g-row._valign-top') {
+  align-items: flex-start;
+}
+@include make-breakpoints('.g-row._valign-middle') {
+  align-items: center;
+}
+@include make-breakpoints('.g-row._valign-bottom') {
+  align-items: flex-end;
+}
+@include make-breakpoints('.g-row._valign-stretch') {
+  align-items: stretch;
+}
+@include make-breakpoints('.g-row._valign-baseline') {
+  align-items: baseline;
+}
+
+// _direction cols
+@include make-breakpoints('.g-row._direction-row-reverse') {
+  flex-direction: row-reverse;
+}
+@include make-breakpoints('.g-row._direction-row') {
+  flex-direction: row;
+}
+@include make-breakpoints('.g-row._direction-column') {
+  flex-direction: column;
+
+  & > div {
+    -ms-flex-preferred-size: auto;
+  }
+}
+@include make-breakpoints('.g-row._direction-column-reverse') {
+  flex-direction: column-reverse;
+
+  & > div {
+    -ms-flex-preferred-size: auto;
+  }
+}
+
+//_align-self col
+@include make-breakpoints('._align-self-end') {
+  align-self: flex-end;
+}
+@include make-breakpoints('._align-self-start') {
+  align-self: flex-start;
+}
+@include make-breakpoints('._align-self-center') {
+  align-self: center;
+}
+@include make-breakpoints('._align-self-stretch') {
+  align-self: stretch;
+}
+
+// _wrap cols
+@include make-breakpoints('.g-row._nowrap') {
+  flex-wrap: nowrap;
+}
+@include make-breakpoints('.g-row._wrap') {
+  flex-wrap: wrap;
+}
+
+// Border
+
+._border-top {
+  border-top: 1px solid $color-border-gray-light;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}

@@ -1,0 +1,579 @@
+@import "../components/core/config";
+@import "../components/core/utils";
+@import "../components/header/config";
+
+.introduction-section {
+    $first-width-break: 900px;
+    $second-width-break: 750px;
+
+    $first-height-break: 1025px;
+    $second-height-break: 765px;
+
+    //background-size: 100% auto;
+    //background: url("ui/images/top-background.svg") no-repeat 50% 0;
+    font-family: $font-family-base;
+
+    .introduction-section__background {
+        top: 0;
+        //width: 100%;
+        width: 1600px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-950px, -85px);
+        z-index: -1;
+    }
+
+    .introduction-section__kotlin-icon {
+        background: url("../images/logos/kotlin_small.svg") no-repeat;
+        width: 238px;
+        height: 53px;
+        top: 0;
+
+        @media screen and (max-height: $first-height-break), screen and (max-width: $first-width-break) {
+            width: 206px;
+            height: 46px;
+        }
+        @media screen and (max-height: $second-height-break), screen and (max-width: $second-width-break) {
+            width: 153px;
+            height: 35px;
+        }
+    }
+
+    .introduction-section__header {
+        font-size: 72px;
+        line-height: 90px;
+        font-weight: 700;
+        color: $color-black;
+        text-transform: capitalize;
+        letter-spacing: -5px;
+        margin-top: 2 * $vertical-unit;
+
+        @media screen and (max-height: $first-height-break), screen and (max-width: $first-width-break) {
+            margin-top: $vertical-unit;
+            font-size: 60px;
+            letter-spacing: -4px;
+            line-height: 65px;
+        }
+        @media screen and (max-height: $second-height-break), screen and (max-width: $second-width-break) {
+            font-size: 42px;
+            line-height: 50px;
+            letter-spacing: -1px;
+            font-weight: 900;
+        }
+
+    }
+
+    .introduction-section__sub-title {
+        font-size: 25px;
+        line-height: 40px;
+        color: #545454;
+
+        margin-top: 0.5 * $vertical-unit;
+        @media screen and (max-height: $first-height-break), screen and (max-width: $first-width-break) {
+            font-size: 20px;
+            line-height: 30px;
+        }
+        @media screen and (max-height: $second-height-break), screen and (max-width: $second-width-break) {
+            margin-top: 0.5 * $vertical-unit;
+            font-size: 18px;
+            line-height: 25px;
+        }
+    }
+
+    .button.try-now-button {
+        $try-now-button-height: 90px;
+        $try-now-button-height-medium: 75px;
+        $try-now-button-height-small: 60px;
+
+        margin-top: 2 * $vertical-unit;
+        font-size: 52px;
+        height: $try-now-button-height;
+        border-radius: $try-now-button-height;
+        line-height: $try-now-button-height;
+        text-transform: capitalize;
+        letter-spacing: -1px;
+
+        @media screen and (max-height: $first-height-break), screen and (max-width: $first-width-break) {
+            font-size: 44px;
+            margin-top: $vertical-unit;
+            height: $try-now-button-height-medium;
+            line-height: $try-now-button-height-medium;
+            border-radius: $try-now-button-height-medium;
+        }
+        @media screen and (max-height: $second-height-break), screen and (max-width: $second-width-break) {
+            font-size: 36px;
+            margin-top: 0.5 * $vertical-unit;
+            height: $try-now-button-height-small;
+            line-height: $try-now-button-height-small;
+            border-radius: $try-now-button-height-small;
+            letter-spacing: 0;
+        }
+    }
+
+    .beta-announcement {
+        margin-top: 3 * $vertical-unit;
+        font-size: 18px;
+        text-transform: none;
+        background-color: #f5f5fd;
+        line-height: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #6e73de;
+        font-weight: 400;
+
+        @media screen and (max-height: $first-height-break), screen and (max-width: $first-width-break) {
+            margin-top: 2 * $vertical-unit;
+            font-size: 16px;
+        }
+
+        @media screen and (max-height: $second-height-break), screen and (max-width: $second-width-break) {
+            margin-top: $vertical-unit;
+            font-size: 14px;
+        }
+    }
+
+    .learn-more-button {
+        cursor: pointer;
+        font-size: 16px;
+        color: #545454;
+    }
+
+    .learn-more-button__arrow {
+        margin-top: 5px;
+        width: 10px;
+        height: 17px;
+        background: svg("ui/images/arrow", '[fill]: #221f1f') no-repeat;
+
+        transform: rotate(-90deg);
+    }
+}
+
+.examples-section {
+    .examples-section__header {
+        font-size: 60px;
+        font-weight: 700;
+        color: $color-white;
+        text-transform: capitalize;
+        letter-spacing: -2px;
+        margin-top: 2 * $vertical-unit;
+        margin-bottom: $vertical-unit;
+    }
+
+    h2 {
+        font-size: 30px;
+        font-weight: 400;
+        color: $color-white;
+        letter-spacing: -1;
+        line-height: 40px;
+    }
+
+    .tabs__tab {
+        display: block;
+        padding-bottom: 0.5 * $vertical-unit;
+        color: $color-text-gray-medium-light;
+        font-size: 18px;
+        line-height: 45px;
+        cursor: pointer;
+
+        .icon {
+            width: 32px;
+            height: 32px;
+            top: 7px;
+
+            &._hello {
+                //background: url("ui/images/hello.svg");
+                background-image: svg('ui/images/hello');
+            }
+
+            &._concise {
+                background: url("../images/concise.svg");
+            }
+
+            &._safe {
+                background: url("../images/safe.svg");
+            }
+
+            &._java {
+                background: url("../images/java.svg");
+            }
+
+            &._android {
+                background: url("../images/android.svg");
+            }
+
+            &._tooling {
+                background: url("../images/tooling.svg");
+            }
+
+            &._dsl {
+                background: url("../images/dsl.svg");
+            }
+
+            &._web {
+                background: url("../images/web.svg");
+            }
+
+            &._easy {
+                background: url("../images/learn.svg");
+            }
+
+            &._twitter {
+                background: url("../images/logos/twitter.svg");
+            }
+        }
+
+        &.is-active, &:hover {
+            color: $color-text-white;
+            .icon {
+                &._hello {
+                    //background: url("../images/hello_hover.svg");
+                    background-image: svg('ui/images/hello', '[fill]: red');
+                }
+
+                &._concise {
+                    background: url("../images/concise_hover.svg");
+                }
+
+                &._safe {
+                    background: url("../images/safe_hover.svg");
+                }
+
+                &._java {
+                    background: url("../images/java_hover.svg");
+                }
+
+                &._android {
+                    background: url("../images/android_hover.svg");
+                }
+
+                &._tooling {
+                    background: url("../images/tooling_hover.svg");
+                }
+
+                &._dsl {
+                    background: url("../images/dsl_hover.svg");
+                }
+
+                &._web {
+                    background: url("../images/web_hover.svg");
+                }
+
+                &._easy {
+                    background: url("../images/learn_hover.svg");
+                }
+            }
+        }
+    }
+
+    .tabs__pane {
+        display: none;
+
+        &.is-active {
+            display: block;
+        }
+    }
+}
+
+.testimonials-section{
+    $first-width-break: $viewport-lg;
+    $second-width-break: $viewport-md;
+
+    $first-height-break: 1025px;
+    $second-height-break: 765px;
+
+    .testimonials-slide__header {
+        position: relative;
+        font-size: 60px;
+        font-weight: 900;
+        line-height: 60px;
+        text-transform: capitalize;
+
+        @media screen and (max-width: $first-width-break) {
+            font-size: 48px;
+            line-height: 48px;
+        }
+        @media screen and (max-width: $second-width-break) {
+            font-size: 36px;
+            line-height: 40px;
+        }
+    }
+
+    .testimonials-slide__sub-title {
+        position: relative;
+        margin-top: $vertical-unit;
+        font-size: 36px;
+        line-height: 40px;
+        @media screen and (max-width: $first-width-break) {
+            font-size: 26px;
+            line-height: 34px;
+        }
+        @media screen and (max-width: $second-width-break) {
+            margin-top: 0.5 * $vertical-unit;
+            font-size: 18px;
+            line-height: 26px;
+        }
+    }
+
+    .testimonials-slide__image {
+        margin-top: -300px;
+        width: 100%;
+        z-index: -1;
+
+        @media screen and (max-width: $first-width-break) {
+            margin-top: -250px;
+        }
+        @media screen and (max-width: $second-width-break) {
+            margin-top: -150px;
+        }
+    }
+
+    .testimonials-slide__customers {
+        .customer-block {
+            font-size: 20px;
+            line-height: 35px;
+
+            @media screen and (max-height: $first-height-break), screen and (max-width: $first-width-break) {
+                font-size: 18px;
+                line-height: 30px;
+            }
+            @media screen and (max-height: $second-height-break), screen and (max-width: $first-width-break) {
+                font-size: 14px;
+                line-height: 24px;
+            }
+        }
+
+        .customer-block__customer {
+            color: $color-text-gray-light;
+            font-size: 14px;
+            padding-top: 0.5 * $vertical-unit;
+            line-height: 24px;
+
+            @media screen and (max-height: $first-height-break), screen and (max-width: $first-width-break) {
+                font-size: 13px;
+                line-height: 22px;
+            }
+            @media screen and (max-height: $second-height-break), screen and (max-width: $first-width-break) {
+                font-size: 12px;
+                line-height: 20px;
+            }
+        }
+
+        margin-top: 4 * $vertical-unit;
+        @media screen and (max-height: $first-height-break) {
+            margin-top: 2 * $vertical-unit;
+        }
+        @media screen and (max-height: $second-height-break) {
+            margin-top: $vertical-unit;
+        }
+    }
+}
+
+.footer-section {
+    $first-width-break: 900px;
+    $second-width-break: 750px;
+
+    $first-height-break: 1025px;
+    $second-height-break: 765px;
+
+    $footer-size: 150px;
+
+    .footer-section__background {
+        z-index: 1;
+        top: 0;
+        width: 1200px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-1000px, 0);
+    }
+
+    .footer-section__content {
+        z-index: 2;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 72px;
+        color: white;
+        font-weight: 700;
+        line-height: 90px;
+
+        @media screen and (max-height: $first-height-break), screen and (max-width: $first-width-break) {
+            font-size: 60px;
+            line-height: 65px;
+        }
+    }
+
+    .get-kotlin-options-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 2 * $vertical-unit;
+
+        @media screen and (max-height: $first-height-break) {
+            margin-top: $vertical-unit;
+        }
+    }
+
+    .get-kotlin-option__icon {
+        width: 57px;
+        height: 57px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-bottom: 0.5 * $vertical-unit;
+
+        .icon {
+            top: 0;
+        }
+    }
+
+    .socials-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .social-link {
+        width: 60px;
+        text-align: center;
+    }
+
+    .social-link__icon {
+        width: 35px;
+        height: 26px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-bottom: 5px;
+
+        .icon {
+            top: 0;
+        }
+    }
+
+    .social-link__text {
+        font-size: 11px;
+        color: #969daa;
+    }
+
+    .copyright {
+        margin-top: $vertical-unit;
+        color: $color-text-white;
+        font-size: 14px;
+    }
+
+    .icon {
+        &._online-demo {
+            width: 54px;
+            height: 43px;
+            background: url("../images/browser.svg");
+        }
+        &._idea {
+            width: 50px;
+            height: 51px;
+            background: url("../images/IJ.svg");
+        }
+        &._eclipse {
+            width: 55px;
+            height: 52px;
+            background: url("../images/eclipse.svg");
+        }
+        &._standalone {
+            width: 57px;
+            height: 57px;
+            background: url("../images/compiler.svg");
+        }
+
+        &._twitter {
+            width: 26px;
+            height: 21px;
+            top: 2px;
+            background: url("../images/twitter.svg") no-repeat;
+            background-size: contain;
+        }
+
+        &._github {
+            width: 26px;
+            height: 26px;
+            background: url("../images/github.svg") no-repeat;
+            background-size: contain;
+        }
+
+        &._forum {
+            width: 30px;
+            height: 24px;
+            top: 1px;
+            background: url("../images/forum.svg") no-repeat;
+            background-size: contain;
+        }
+
+        &._slack {
+            width: 26px;
+            height: 26px;
+            background: url("../images/slack.svg") no-repeat;
+            background-size: contain;
+        }
+
+        &._youtrack {
+            width: 26px;
+            height: 26px;
+            background: url("../images/youtrack.svg") no-repeat;
+            background-size: contain;
+        }
+    }
+
+    .get-kotlin-option__what {
+        font-size: 12px;
+        text-decoration: underline;
+        color: $color-text-gray-medium;
+    }
+
+    .get-kotlin-option__where {
+        font-size: 18px;
+        text-decoration: underline;
+        color: $color-white;
+    }
+
+    .footer__main {
+        height: $footer-size;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
+    .footer__main-placeholder {
+        height: $footer-size;
+    }
+}
+
+.footer__main {
+    height: $header-height;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.footer__main-placeholder {
+    height: $header-height;
+}
+
+.icon-with-note {
+    display: inline-block;
+}
+
+.icon {
+    position: relative;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.code-sample {
+    font-size: 18px;
+    color: white;
+}
+
+
+
+

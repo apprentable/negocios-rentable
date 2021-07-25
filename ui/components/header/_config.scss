@@ -1,0 +1,21 @@
+@import "../core/colors";
+@import "../core/config";
+
+$header-height: 75px;
+
+$header-bg-color: transparent;
+$header-text-color: #221f1f;
+$header-white-text-color: #fff;
+$header-item-color: $header-text-color;
+$header-item-hover-color: $color-text-gray-dark;
+$header-item-bg-hover-color: $color-white;
+
+$header-white-text-color: $color-white;
+
+$header-logo-width: 118px;
+$header-logo-height: 130px;
+
+$header-menu-padding: 15px;
+$header-title-font-size: 24px;
+
+$header-transition-time: $transition-xfast;

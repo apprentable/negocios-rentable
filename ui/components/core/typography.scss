@@ -1,0 +1,463 @@
+/**
+ * @name Typography
+ * @collection core
+ */
+
+@import "./config";
+@import "./utils";
+
+
+b,
+strong {
+  font-size: inherit;
+  font-weight: 700;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+
+.article-content {
+  font-family: $article-content-font-family;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 25px;
+
+  color: $article-content-text-color;
+
+  .section-content._bg-extra-dark & {
+    color: $color-text-gray-medium-light;
+  }
+
+  @include make-break-sm () {
+    padding-bottom: $article-content-vertical-unit;
+  }
+}
+
+/**
+ * @example
+ <example name="Headers: only in article-content" direction="row">
+   <file name="index.html">
+     <div class="article-content">
+        <h1 class="_extra-big">h1. This is an extra large header.</h1>
+        <h1 class="_big">h1. This is a large header.</h1>
+        <h1>h1. This is a first level header.</h1>
+        <h2>h2. This is a second level header.</h2>
+        <h3>h3. This is a third level header.</h3>
+        <h4>h4. This is a fourth header.</h4>
+     </div>
+   </file>
+
+   <file name="index.js" webpack="true" show="false">
+   require('core/reset.scss');
+    require('core/typography.scss');
+   </file>
+ </example>
+*/
+
+.article-content {
+  h1 {
+    @extend %h1;
+
+    &._big {@extend %h1-big;}
+    &._extra-big {@extend %h1-extra-big;}
+  }
+
+  h2 {
+    @extend %h2;
+  }
+
+  h3 {
+    @extend %h3;
+  }
+
+  h4 {
+    @extend %h4;
+  }
+}
+
+/**
+ * @example
+ <example name="Paragraphs and sub-titles: only in article-content" direction="row">
+   <file name="index.html">
+     <div class="article-content">
+        <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm.</p>
+        <p class="sub-title">This is a sub-title. Sub-title are preset with a font size, line height and spacing to match the overall vertical rhythm.</p>
+        <p class="sub-title _big">Font size 36px. This is a sub-title. Sub-title are preset with a font size, line height and spacing to match the overall vertical rhythm.</p>
+     </div>
+   </file>
+
+   <file name="index.js" webpack="true" show="false">
+   require('core/reset.scss');
+    require('core/typography.scss');
+   </file>
+ </example>
+*/
+.article-content {
+  p {
+    @extend %p;
+
+    &._big {
+      font-size: $subtitle-font-size;
+      font-weight: 400;
+      line-height: $subtitle-line-height;
+
+      margin-bottom: 10px;;
+
+      @include make-break-sm() {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .sub-title{
+    @extend %subtitle;
+
+    &._big {
+      @extend %subtitle-big;
+    }
+  }
+}
+
+/**
+ * @example
+ <example name="Links" direction="row">
+    <style>
+      a {
+        display: block;
+        margin-bottom: 20px;
+      }
+    </style>
+   <file name="index.html">
+    <div class="article-content">
+      <a href="#">Simple link</a>
+      <a class="underline" href="#">Underlined link</a>
+    </div>
+    <div class="article-content">
+      <a class="_external" href="#">External link</a>
+    </div>
+    <div class="article-content">
+      <a class="_external _color-gray" href="#">External _color-gray link</a>
+    </div>
+    <div class="article-content">
+      <a class="_color-gray" href="#">_color-gray link</a>
+    </div>
+    <div class="article-content">
+      <a class="underline _color-white" href="#">Underlined white link</a>
+    </div>
+   </file>
+
+   <file name="index.js" webpack="true" show="false">
+   require('core/reset.scss');
+    require('core/typography.scss');
+   </file>
+ </example>
+*/
+
+.link,
+a {
+
+  color: $link-color;
+  cursor: pointer;
+  text-decoration: none;
+
+  @extend %a-actions;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &._color-white {
+    color: $link-color-white;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $link-color-white;
+      text-decoration: none;
+    }
+  }
+
+  &._color-black {
+    color: $link-color-black;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $link-color-black;
+      text-decoration: none;
+    }
+  }
+
+  &._color-gray {
+    color: $link-color-gray;
+  }
+
+  //&._external {
+  //  display: inline-block;
+  //
+  //  &:after {
+  //    line-height: inherit;
+  //
+  //    display: inline-block;
+  //
+  //    width: 10px;
+  //    height: 10px;
+  //    margin-left: 5px;
+  //
+  //    background-image: url("../icon/external-link/external-link.svg");
+  //    background-repeat: no-repeat;
+  //    background-position: 50% 50%;
+  //    background-size: 100% auto;
+  //    content: '';
+  //  }
+  //
+  //  &._color-gray {
+  //    &:after {
+  //      background-image: url("../icon/external-link/external-link-gray.svg");
+  //    }
+  //  }
+  //
+  //  &:hover {
+  //    color: $link-color-hover;
+  //
+  //    &:after {
+  //      background-image: url("../icon/external-link/external-link-hover.svg");
+  //    }
+  //  }
+  //
+  //  &:active,
+  //  &:focus {
+  //    color: $link-color-active;
+  //
+  //    &:after {
+  //      background-image: url("../icon/external-link/external-link-active.svg");
+  //    }
+  //  }
+  //}
+}
+
+/**
+ * @example
+ <example name="Lists" direction="row">
+   <file name="index.html">
+    <ul class="list _dotted">
+      <li>List item with a much longer description or more content.</li>
+      <li>List item</li>
+      <li>List item
+        <ul class="list _dotted">
+          <li>Nested list item</li>
+          <li>Nested list item</li>
+          <li>Nested list item</li>
+        </ul>
+      </li>
+      <li>List item</li>
+      <li>List item</li>
+      <li>List item</li>
+     </ul>
+   </file>
+
+   <file name="index.js" webpack="true" show="false">
+   require('core/reset.scss');
+    require('core/typography.scss');
+   </file>
+ </example>
+*/
+
+.list {
+  display: block;
+  width: 100%;
+
+  &._list-style-none {
+    @extend %list-style-none;
+  }
+
+  &._list-li-no-margin-bottom {
+      @extend %list-li-no-margin-bottom
+    }
+
+  &._dotted {
+    @extend %list;
+    @extend %list-dotted;
+  }
+}
+
+
+/**
+ * @example
+ <example name="Lists: only in article-content" direction="row">
+   <file name="index.html">
+   <div class="article-content">
+     <ul>
+        <li>List item with a much longer description or more content.</li>
+        <li>List item</li>
+        <li>List item
+          <ul>
+            <li>Nested list item</li>
+            <li>Nested list item</li>
+            <li>Nested list item</li>
+          </ul>
+        </li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+       </ul>
+   </div>
+
+   <div class="article-content">
+     <ol>
+        <li>List item with a much longer description or more content.</li>
+        <li>List item</li>
+        <li>List item
+          <ol>
+            <li>Nested list item</li>
+            <li>Nested list item</li>
+            <li>Nested list item</li>
+          </ol>
+        </li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+        <li>List item</li>
+       </ol>
+   </div>
+   </file>
+
+   <file name="index.js" webpack="true" show="false">
+    require('core/reset.scss');
+    require('core/typography.scss');
+   </file>
+ </example>
+*/
+.article-content {
+  ul {
+    @extend %list;
+    @extend %list-dotted;
+
+    &._list-style-none {
+      @extend %list-style-none;
+    }
+
+    &._list-li-no-margin-bottom {
+      @extend %list-li-no-margin-bottom
+    }
+  }
+
+  ol {
+    @extend %list;
+
+    > li {
+      font-size: inherit;
+
+      list-style-type: decimal;
+    }
+
+    &._list-li-no-margin-bottom {
+      @extend %list-li-no-margin-bottom
+    }
+
+    &._list-style-none {
+      @extend %list-style-none;
+    }
+  }
+}
+
+/**
+ * @example
+ <example name="Misc" direction="column">
+   <file name="index.html">
+    <div class="article-content">
+      <p>
+        <span class="marked-text">Marked text</span>
+      </p>
+
+      <p>
+        <span class="price">$229</span>
+      </p>
+
+      <p>
+        <time class="time">September 18, 2015</time>
+        <time class="time _light-color">September 18, 2015</time>
+      </p>
+
+      <p>
+        <span class="ui-control">Find Results</span>
+      </p>
+
+      <p>
+        <span class="menu-path">ReSharper | Help | Profile Visual Studio</span>
+      </p>
+   </file>
+
+   <file name="index.js" webpack="true" show="false">
+    require('core/reset.scss');
+    require('core/typography.scss');
+   </file>
+ </example>
+*/
+
+.time {
+  font-size: 14px;
+
+  display: block;
+  padding: 5px 0 10px;
+
+  color: $color-text-gray-medium;
+  border-bottom: 1px solid $color-border-gray-light;
+
+  &._light-color {
+    color: $color-text-gray-medium-light;
+    border-bottom: 1px solid $color-border-gray-dark;
+  }
+
+  &._margin-bottom {
+    margin-bottom: 40px;
+  }
+}
+
+.marked-text {
+  color: $color-text-orange;
+  font-weight: 500;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.ui-control {
+  font-style: italic;
+}
+
+.menu-path {
+  font-style: italic;
+}
+
+small {
+  font-size: 70%;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: $color-border-gray-light;
+
+  .section-content._bg-dark &,
+  .section-content._bg-extra-dark &{
+    background-color: $color-border-gray-dark;
+  }
+}

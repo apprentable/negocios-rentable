@@ -1,0 +1,38 @@
+/**
+ * @name Grid config file
+ * @description Config on responsive flexbox grid
+ */
+@import "../core/config";
+
+//
+// Variables
+
+$grid-prefix: '.g-';
+
+$column-count: 12;
+$column-selector: '.g-col';
+$offset-modifier: 'offset';
+$spacer-modifier: 'spacer';
+
+$outer-padding: $content-container-outer-padding;
+$outer-padding-lg: $content-container-outer-padding-lg;
+$outer-padding-md: $content-container-outer-padding-md;
+$outer-padding-sm: $content-container-outer-padding-sm;
+
+$block-delimiter: $block-delimiter;
+$element-delimiter: $element-delimiter;
+$modifier-delimiter: $modifier-delimiter;
+
+$container-sm: 100%;
+$container-width-md: 100%;
+$container-width-lg: 100%;
+$container-width-xlg: 100%;
+$container-width: 100%;
+
+$container-max-width: $content-container-max-width;
+
+$body-min-width: 1024px;
+
+$column-properties: 'flex-basis', 'max-width';
+$offset-properties: 'margin-left';
+$spacer-properties: 'padding-right';

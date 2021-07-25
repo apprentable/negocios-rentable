@@ -1,0 +1,206 @@
+@import "../core/config";
+@import "../core/utils";
+@import "../header/config";
+@import "./config";
+
+
+.page {
+  position: relative;
+
+  //min-height: 100%;
+  max-width: 100%;
+
+  &._has-page-sidebar-left {
+    .page__content,
+    &._mobile .page__header,
+    &._mobile .page__footer {
+      .g-container {
+
+        @media screen and (min-width: $viewport-xlg) {
+          padding-left: calc(#{$content-container-outer-padding} + 100% / 11);
+          max-width: none;
+        }
+
+        @media screen and (min-width: $page-sidebar-breakpoint-xxlg) {
+          padding-left: calc(#{$content-container-outer-padding} + 100% / 10);
+        }
+
+        @media screen and (min-width: $page-sidebar-breakpoint-xxxlg) {
+          max-width: $content-container-max-width;
+          padding-left: $content-container-outer-padding;
+        }
+
+        @include make-break-xlg () {
+          padding-left: calc(#{$content-container-outer-padding} + 100% / 10);
+        }
+
+        @include make-break-lg () {
+          padding-left: calc(#{$content-container-outer-padding-lg} + 100% / 13);
+        }
+
+        @include make-break-md () {
+          padding-left: calc(#{$content-container-outer-padding-md} + 100% / 13);
+        }
+
+        @include make-break-sm () {
+          padding-left: calc(#{$content-container-outer-padding-sm} + (100% / 13) * 2);
+        }
+      }
+    }
+  }
+}
+
+.page__header {
+  position: relative;
+  top: 0;
+  z-index: $page-header-z-index;
+
+  margin: 0 auto;
+  width: 100%;
+  //height: $header-main-height + $header-secondary-height;
+
+  @include make-break-sm () {
+    height: 50px;
+  }
+}
+
+.page__header-placeholder {
+  @extend .page__header;
+}
+
+.page__beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.page__content {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  max-width: 100%;
+
+  .home-page & {
+    margin-top: -$header-main-height;
+  }
+
+  .page._has-page-sidebar-left & {
+    background-color: $color-bg-gray-light;
+  }
+}
+
+.section {
+  padding-top: 10px;
+  padding-bottom: $vertical-unit * 2;
+
+  &._bg-extra-dark {
+    @extend %section-bg-extra-dark;
+  }
+
+  &._bg-dark {
+    @extend %section-bg-dark;
+  }
+
+  &._bg-medium {
+    @extend %section-bg-medium;
+  }
+
+  &._bg-extra-light {
+    @extend %section-bg-extra-light;
+  }
+
+  &._padding-top {
+    padding-top: $vertical-unit;
+  }
+}
+
+.whatsnew-header {}
+
+.whatsnew-header__top {
+  padding-top: $vertical-unit * 1.5;
+  padding-bottom: $vertical-unit * 2;
+
+  @include make-break-sm () {
+    padding-top: $vertical-unit;
+    padding-bottom: $vertical-unit;
+  }
+}
+
+.jb-stats-block {
+  margin-top: $vertical-unit;
+
+  @include make-break-sm {
+    margin-top: 0;
+    margin-bottom: $vertical-unit * 1.5;
+
+    text-align: center;
+  }
+}
+
+
+.jb-stats-block__title {
+  margin-bottom: 10px;
+
+  font-weight: 300;
+  font-size: $h1-extra-big-font-size;
+  line-height: $h1-extra-big-line-height;
+
+  @include make-break-md {
+    font-size: $h1-extra-big-font-size * 0.7;
+    line-height: $h1-extra-big-line-height * 0.7;
+  }
+}
+
+.jb-stats-block__text {
+  $font-size: 16px;
+  $line-height: 25px;
+
+  color: $color-text-gray-medium-light;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  @include make-break-md {
+    font-size: $font-size - 2px;
+    line-height: $line-height - 5px;
+  }
+}
+
+.not-supported-browser {
+  font-size: 18px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  color: $color-white;
+
+  background-color: $color-black;
+  z-index: $z-index-no-supported-browser;
+}
+
+.not-supported-browser__container {
+  box-sizing: border-box;
+  position: relative;
+
+  width: 70%;
+  max-width: 1024px;
+  min-width: 640px;
+  margin: 200px auto;
+  padding-left: 200px;
+}
+
+.not-supported-browser__title {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.not-supported-browser__logo {
+  position: absolute;
+  left: -50px;
+  top: -40px;
+}

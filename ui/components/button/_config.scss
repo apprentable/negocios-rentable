@@ -1,0 +1,46 @@
+@import "../core/config";
+
+$button-unit: $vertical-unit;
+
+$button-font-family: $font-family-sans-serif;
+
+//Colors
+// Button primary
+$button-primary-background: $color-bg-blue;
+$button-primary-hover-background: #0887d7;
+$button-primary-active-background: #0573b8;
+$button-primary-color: $color-white;
+
+// Button secondary
+$button-secondary-padding-horizontal: 20px;
+
+$button-secondary-color: $color-text-blue;
+$button-secondary-hover-border-color: #0887d7;
+$button-secondary-hover-text-color: #0887d7;
+
+$button-secondary-active-border-color: #0573b8;
+$button-secondary-active-text-color: #0573b8;
+
+$button-secondary-border-color-dark: $color-border-gray-dark;
+$button-secondary-border-color-light: $color-border-gray-light;
+
+$button-secondary-transparent-text-color: $color-black;
+
+// Button dark
+$button-dark-background: $color-black;
+$button-dark-hover-background: #5a5a5a;
+$button-dark-active-background: #454545;
+$button-dark-color: $color-white;
+
+// Button light
+$button-light-background: $color-white;
+$button-light-hover-background: #e6e6e6;
+$button-light-active-background: #d9d9d9;
+$button-light-color: $color-black;
+
+// Font size
+$button-font-size: 12px;
+
+// Sizes
+$button-size-1-height: $vertical-unit;
+$button-size-2-height: $button-unit * .8;
