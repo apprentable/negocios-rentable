@@ -1,0 +1,15 @@
+{#{% if not is_index_page %}#}
+    <div class="global-header-panel banner-nav">
+        <div class="g-layout">
+            {% include 'inc/nav/header-banner-nav.html' %}
+        </div>
+    </div>
+{#{% endif %}#}
+<header class="global-header">
+    <div class="global-header-panel">
+        <div class="g-layout">
+            <a class="global-header-logo" href="{{ baseurl }}/">Kotlin</a> <a href="{{ data.releases.latest.url }}" target="_blank" class="global-header-logo__version">{{ data.releases.latest.version }}</a>
+            {% include 'inc/nav/global-nav.html' %}
+        </div>
+    </div>
+</header>
