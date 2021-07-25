@@ -1,0 +1,37 @@
+# Jekyll Settings
+name: Kotlin
+markdown: kramdown
+markdown_ext: foo
+kramdown:
+  input: GFM
+  hard_wrap: false
+highlighter: pygments
+exclude:
+  - vendor
+  - bin
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - rake
+  - INSTALL.sh
+  - README.md
+  - notes.txt
+  - LICENSE
+
+include:
+  - js
+
+# Site Settings
+baseurl:
+
+# Custom Settings
+github_url: https://github.com/JetBrains/kotlin
+twitter_url: https://twitter.com/project_kotlin
+forum_url: http://devnet.jetbrains.com/community/kotlin
+site_github_url: http://github.com/JetBrains/kotlin-web-site
+edit_on_github_url: https://github.com/JetBrains/kotlin-web-site/edit/master/%path%
+img_tutorial_root: assets/images/tutorials
+
+# Analytics and webmaster tools stuff goes here
+google_analytics: UA-940435-32
+google_verify:
