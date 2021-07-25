@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  kotlin-web-site:
+    build:
+      dockerfile: ./Dockerfile.dev
+      context: ./
+    image: kotlin-web-site:latest
+    container_name: kotlin-web-site
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - ./:/code
