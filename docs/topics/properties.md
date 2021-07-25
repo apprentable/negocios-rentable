@@ -100,9 +100,7 @@ in the accessors using the `field` identifier:
 ```kotlin
 var counter = 0 // the initializer assigns the backing field directly
     set(value) {
-        if (value >= 0)
-            field = value
-            // counter = value // ERROR StackOverflow: Using actual name 'counter' would make setter recursive
+        if (value >= 0) field = value
     }
 ```
 
@@ -144,7 +142,7 @@ public val table: Map<String, Int>
 If the value of a read-only property is known at the compile time, mark it as a *compile time constant* using the `const` modifier.
 Such properties need to fulfil the following requirements:
 
-  * Top-level, or member of an [`object` declaration](object-declarations.md#object-declarations-overview) or [a *companion object*](object-declarations.md#companion-objects).
+  * Top-level, or member of an [`object` declaration](object-declarations.md#object-declarations) or [a *companion object*](object-declarations.md#companion-objects).
   * Initialized with a value of type `String` or a primitive type
   * No custom getter
 

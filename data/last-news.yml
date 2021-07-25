@@ -1,11 +1,11 @@
-- title: "Kotlin 1.5 Event Materials and 10 Questions from the Q&A"
-  link: https://blog.jetbrains.com/kotlin/2021/06/kotlin-1-5-event-materials-and-10-most-interesting-questions-of-the-qa/
+- title: "Kotlin 1.5 Language Features Preview"
+  link: https://blog.jetbrains.com/kotlin/2021/02/new-language-features-preview-in-kotlin-1-4-30/
 
-- title: "Nine Highlights from the Kotlin Roadmap"
-  link: https://blog.jetbrains.com/kotlin/2021/05/nine-highlights-from-the-kotlin-roadmap/
+- title: "Try The New JVM IR Backend"
+  link: https://blog.jetbrains.com/kotlin/2021/02/the-jvm-backend-is-in-beta-let-s-make-it-stable-together/
 
-- title: "What’s new in KMM since going Alpha"
-  link: https://blog.jetbrains.com/kotlin/2021/05/whats-new-in-kmm-since-going-alpha/
+- title: "Jetpack Compose for Desktop. Milestone 3"
+  link: https://blog.jetbrains.com/kotlin/2021/02/jetpack-compose-for-desktop-milestone-3-released/
 
-- title: "Talking Kotlin: Realm for Kotlin Multiplatform"
-  link: https://youtu.be/pU9yaCPmQ2g
+- title: "Server-Side Development with Kotlin: Webinar Series"
+  link: https://blog.jetbrains.com/kotlin/2021/02/server-side-with-kotlin-webinar-series-vol-2/

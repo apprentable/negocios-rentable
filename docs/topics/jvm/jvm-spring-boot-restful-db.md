@@ -8,10 +8,6 @@ On completing this tutorial you'll have an application with a database for stori
 >
 {type="note"}
 
-You can also watch a video of this tutorial (starting from 4:17):
-
-<video width="560" height="315" href="gf-kjD2ZmZk" title="Spring Time in Kotlin. Getting Started"/>
-
 ## Add database support
 
 In this section, you will create two endpoints: one for saving messages to the database, and one for retrieving them:
@@ -93,7 +89,7 @@ In this section, you will create two endpoints: one for saving messages to the d
 
 Configure the database in the application:
 
-1. Create a new folder called `sql` in the `src/main/resources` with the `schema.sql` file inside. It will store the database scheme:
+1. Create a new folder called `sql` in the `src/main/resources` with the `scheme.sql` file inside. It will store the database scheme:
 
    ![Create a new folder](spring-boot-sql-scheme.png){width=300}
 
@@ -175,7 +171,7 @@ In IntelliJ IDEA, you can use the embedded [HTTP client](https://www.jetbrains.c
 
 You can also use any other HTTP client or cURL command-line tool. For example, you can run the following commands in the terminal to get the same result:
 
-```bash
+```cURL
 curl -X POST --location "http://localhost:8080" -H "Content-Type: application/json" -d "{ \"text\": \"Hello!\" }"
 
 curl -X POST --location "http://localhost:8080" -H "Content-Type: application/json" -d "{ \"text\": \"Bonjour!\" }"

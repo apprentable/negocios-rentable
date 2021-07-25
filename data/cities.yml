@@ -1,27 +1,3 @@
-- name: Táizhōng, Taiwan
-  geo:
-    lat: 23.882593
-    lng: 120.954775
-- name: Zhilina, Slovakia
-  geo:
-    lat: 49.223516
-    lng: 18.739297
-- name: Vilnius, Lithuania
-  geo:
-    lat: 54.689383
-    lng: 25.270894
-- name: Chiasso, Switzerland
-  geo:
-    lat: 45.839996
-    lng: 9.018888
-- name: Torino, Italy
-  geo:
-    lat: 45.069149
-    lng: 7.688672
-- name: Vilnius, Switzerland
-  geo:
-    lat: 46.812875
-    lng: 8.443732
 - name: Angola, Luanda
   geo:
     lat: -8.814776

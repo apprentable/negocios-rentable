@@ -109,7 +109,7 @@ API of a module but still have to be visible externally.
 
 ## Inline markup
 
-For inline markup, KDoc uses the regular [Markdown](https://daringfireball.net/projects/markdown/syntax) syntax, extended
+For inline markup, KDoc uses the regular [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax, extended
 to support a shorthand syntax for linking to other elements in the code.
 
 ### Links to elements
@@ -148,7 +148,7 @@ and the paths to that file is passed to Dokka using the `-include` command line 
 in Ant, Maven and Gradle plugins.
 
 Inside the file, the documentation for the module as a whole and for individual packages is introduced by the corresponding
-first-level headings. The text of the heading must be **Module `<module name>`** for the module, and **Package `<package qualified name>`**
+first-level headings. The text of the heading must be "Module `<module name>`" for the module, and "Package `<package qualified name>`"
 for a package.
 
 Here's an example content of the file:

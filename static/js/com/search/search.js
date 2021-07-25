@@ -15,9 +15,11 @@ const KEYS = {
   ESC: 27
 };
 
-export function initSearch() {
-  const $searchPopup = $('.search-popup');
-  const $closeButton = $('.search-popup__close');
+$(document).ready(function () {
+  const $searchButton = $('.search-button'),
+    $searchPopup = $('.search-popup'),
+    $closeButton = $('.search-popup__close'),
+    $layout = $('.global-layout');
 
   let isInited = false;
 
@@ -127,18 +129,17 @@ export function initSearch() {
 
   $closeButton.on('click', closePopup);
 
+  $searchButton.on('click touch', openPopup);
+
   $(".search-popup").click(function () {
     $(".ais-search-box--input").select();
   });
 
   const urlParameters = UrlUtils.parse(UrlUtils.extract(window.location.href));
-
   if ('q' in urlParameters && urlParameters.q !== '') {
     openPopup();
   }
-
-  return { openPopup };
-}
+});
 
 function handlerKeysEvent() {
   $(".ais-search-box--input").keydown(function (e) {

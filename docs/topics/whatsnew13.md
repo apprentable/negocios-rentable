@@ -1,7 +1,5 @@
 [//]: # (title: What's new in Kotlin 1.3)
 
-_Release date: 29 October 2018_
-
 ## Coroutines release
 
 After some long and extensive battle testing, coroutines are now released! It means that from Kotlin 1.3 the language
@@ -29,7 +27,7 @@ The key differences to the old model are:
   (for example, in a module that targets JS, Android and iOS, you can have a source set that is shared only between Android and iOS).
   * [Publishing multiplatform libraries](mpp-publish-lib.md) is now supported.
 
-For more information, please refer to the [multiplatform programming documentation](multiplatform.md).
+For more information, please refer to the [Multiplatform Programming documentation](multiplatform.md).
 
 ## Contracts
 
@@ -135,7 +133,7 @@ See the details on the syntax as well as the compatibility notice in the [KEEP](
 
 ## Capturing `when` subject in a variable
 
-In Kotlin 1.3, it is now possible to capture the `when` subject into a variable:
+In Kotlin 1.3, it is now possible to capture the `when` subject into variable:
 
 ```kotlin
 fun Request.getBody() =
@@ -146,7 +144,7 @@ fun Request.getBody() =
 ```
 
 While it was already possible to extract this variable just before `when` , `val` in `when` has its scope properly restricted
-to the body of `when`, and so preventing namespace pollution. [See the full documentation on `when` here](control-flow.md#when-expression).
+to the body of `when`, and so preventing namespace pollution. See the full documentation on `when` [here](control-flow.md#when-expression).
 
 ## @JvmStatic and @JvmField in companions of interfaces
 
@@ -285,6 +283,7 @@ See [reference](inline-classes.md) for inline classes for details.
 > Unsigned integers are in [Beta](components-stability.md).
 > Their implementation is almost stable, but migration steps may be required in the future.
 > We'll do our best to minimize any changes you will have to make.
+> See details in the [reference](basic-types.md#beta-status-of-unsigned-integers).
 >
 {type="warning"}
 
@@ -409,6 +408,7 @@ fun main() {
 //sampleEnd
 }
 ```
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
 ### ifEmpty and ifBlank functions
 

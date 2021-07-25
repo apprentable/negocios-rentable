@@ -25,14 +25,14 @@ fun result() =
             p  {+"this format can be used as an alternative markup to XML"}
 
             // an element with attributes and text content
-            a(href = "https://kotlinlang.org") {+"Kotlin"}
+            a(href = "http://kotlinlang.org") {+"Kotlin"}
 
             // mixed content
             p {
                 +"This is some"
                 b {+"mixed"}
                 +"text. For more see the"
-                a(href = "https://kotlinlang.org") {+"Kotlin"}
+                a(href = "http://kotlinlang.org") {+"Kotlin"}
                 +"project"
             }
             p {+"some text"}
@@ -47,7 +47,7 @@ fun result() =
 ```
 
 This is completely legitimate Kotlin code.
-You can [play with this code online (modify it and run in the browser) here](https://play.kotlinlang.org/byExample/09_Kotlin_JS/06_HtmlBuilder).
+You can play with this code online (modify it and run in the browser) [here](https://play.kotlinlang.org/byExample/09_Kotlin_JS/06_HtmlBuilder).
 
 ## How it works
 

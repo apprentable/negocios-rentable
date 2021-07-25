@@ -375,7 +375,7 @@ kotlin.jvm.JvmClassMappingKt.getKotlinClass(MainView.class)
 
 ## Handling signature clashes with @JvmName
 
-Sometimes we have a named function in Kotlin, for which we need a different JVM name in the bytecode.
+Sometimes we have a named function in Kotlin, for which we need a different JVM name in the byte code.
 The most prominent example happens due to *type erasure*:
 
 ```kotlin

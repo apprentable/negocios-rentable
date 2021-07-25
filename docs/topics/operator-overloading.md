@@ -1,7 +1,7 @@
 [//]: # (title: Operator overloading)
 
 Kotlin allows you to provide custom implementations for the predefined set of operators on types. These operators have
-predefined symbolic representation (like `+` or `*`) and precedence. To implement an operator, provide a [member function](functions.md#member-functions)
+prefedined symbolic representation (like `+` or `*`) and precedence. To implement an operator, provide a [member function](functions.md#member-functions)
 or an [extension function](extensions.md) with a specific name for the corresponding type. This type becomes the left-hand side type
 for binary operations and the argument type for the unary ones.
 
@@ -97,7 +97,7 @@ For the *prefix* forms `++a` and `--a` resolution works the same way, and the ef
 | `a - b` | `a.minus(b)` |
 | `a * b` | `a.times(b)` |
 | `a / b` | `a.div(b)` |
-| `a % b` | `a.rem(b)` |
+| `a % b` | `a.rem(b)`, `a.mod(b)` (deprecated) |
 | `a..b ` | `a.rangeTo(b)` |
 
 For the operations in this table, the compiler just resolves the expression in the *Translated to* column.
@@ -153,7 +153,7 @@ Parentheses are translated to calls to `invoke` with appropriate number of argum
 | `a -= b` | `a.minusAssign(b)` |
 | `a *= b` | `a.timesAssign(b)` |
 | `a /= b` | `a.divAssign(b)` |
-| `a %= b` | `a.remAssign(b)` |
+| `a %= b` | `a.remAssign(b)`, `a.modAssign(b)` (deprecated) |
 
 For the assignment operations, for example `a += b`, the compiler performs the following steps:
 
