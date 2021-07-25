@@ -1,0 +1,34 @@
+
+<header class="global-header">
+
+    <div class="global-header-panel">
+        <div class="g-layout">
+            <a class="global-header-logo" href="{{ baseurl }}/">Kotlin</a>
+            {% include 'inc/nav/global-nav.html' %}
+        </div>
+    </div>
+
+    <div class="g-layout">
+        {% if is_index_page %}
+            <div class="kotlin-info">
+                <div class="kotlin-info-description">
+                    Statically typed programming language<br>
+                    for modern multiplatform applications
+                </div>
+                <div class="kotlin-info-description-extra">
+                    100% interoperable with Java™ and Android™
+                </div>
+                <a href="http://try.kotlinlang.org" class="get-kotlin-button">
+                    Try Kotlin
+                </a>
+            <span class="release-banner">
+                Watch KotlinConf 2018 Online 
+                <a class="release-banner__link"
+                   href="https://kotlinconf.com/?utm_source=organic&utm_medium=kotlinlang&utm_campaign=KotlinConf%20Live">
+                    sign up</a>
+            </span>
+            </div>
+            <div class="current-version">Version {{ site.data.releases.latest.version }}</div>
+        {% endif %}
+    </div>
+</header>
